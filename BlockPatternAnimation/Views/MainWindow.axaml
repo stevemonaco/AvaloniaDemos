@@ -1,0 +1,135 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BlockPatternAnimation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:am="using:Avalonia.Media"
+		xmlns:aa="using:Avalonia.Animation"
+		xmlns:sys="using:System"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BlockPatternAnimation.Views.MainWindow"
+		x:Name="window"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="BlockPatternAnimation">
+
+	<!-- Animation based upon Temani Afif's https://codepen.io/t_afif/full/OJvBbxm -->
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Window.Resources>
+		<am:Color x:Key="c1">#C3CCAF</am:Color>
+		<am:Color x:Key="c2">#67434F</am:Color>
+		<sys:Double x:Key="smallPatternSize">100</sys:Double>
+		<sys:Double x:Key="largePatternSize">200</sys:Double>
+		<sys:Double x:Key="smallSquareSize">40</sys:Double>
+		<sys:Double x:Key="largeSquareSize">80</sys:Double>
+
+		<!--  Default easing method in CSS: ease -> cubic-bezier(0.25, 0.1, 0.25, 1.0)  -->
+		<aa:KeySpline x:Key="spline">0.25, 0.1, 0.25, 1.0</aa:KeySpline>
+
+		<VisualBrush x:Key="bgB" TileMode="Tile" Stretch="None" SourceRect="0,0,100,100" DestinationRect="0,0,100,100">
+			<VisualBrush.Visual>
+				<Canvas Width="{StaticResource smallPatternSize}" Height="{StaticResource smallPatternSize}">
+					<Rectangle Width="{StaticResource largeSquareSize}" Height="{StaticResource largeSquareSize}" Fill="{StaticResource c2}" />
+				</Canvas>
+			</VisualBrush.Visual>
+			<VisualBrush.Transform>
+				<TranslateTransform X="20" Y="20" />
+			</VisualBrush.Transform>
+		</VisualBrush>
+
+		<VisualBrush x:Key="fgA" TileMode="Tile" Stretch="None" SourceRect="0,0,200,200" DestinationRect="0,0,200,200">
+			<VisualBrush.Visual>
+				<Canvas Width="{StaticResource largePatternSize}" Height="{StaticResource largePatternSize}">
+					<Rectangle Width="{StaticResource largeSquareSize}" Height="{StaticResource largeSquareSize}" Fill="{StaticResource c1}" />
+					<Rectangle Canvas.Left="20" Canvas.Top="20" Width="{StaticResource smallSquareSize}" Height="{StaticResource smallSquareSize}" Fill="{StaticResource c2}" />
+				</Canvas>
+			</VisualBrush.Visual>
+			<VisualBrush.Transform>
+				<TranslateTransform X="70" Y="70" />
+			</VisualBrush.Transform>
+		</VisualBrush>
+
+		<VisualBrush x:Key="fgB" TileMode="Tile" Stretch="None" SourceRect="0,0,200,200" DestinationRect="0,0,200,200">
+			<VisualBrush.Visual>
+				<Canvas Width="200" Height="200">
+					<Rectangle Width="80" Height="80" Fill="{StaticResource c1}" />
+					<Rectangle Canvas.Left="20" Canvas.Top="20" Width="40" Height="40" Fill="{StaticResource c2}" />
+				</Canvas>
+			</VisualBrush.Visual>
+			<VisualBrush.Transform>
+				<TranslateTransform X="-30" Y="-30" />
+			</VisualBrush.Transform>
+		</VisualBrush>
+	</Window.Resources>
+
+	<Window.Styles>
+		<Style Selector="Grid.northeast">
+			<Style.Animations>
+				<Animation Duration="0:0:3" IterationCount="Infinite">
+					<KeyFrame Cue="0%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="0" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+					<KeyFrame Cue="25%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="-100" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+					<KeyFrame Cue="50%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="-100" />
+						<Setter Property="TranslateTransform.Y" Value="-100" />
+					</KeyFrame>
+					<KeyFrame Cue="75%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="-200" />
+						<Setter Property="TranslateTransform.Y" Value="-100" />
+					</KeyFrame>
+					<KeyFrame Cue="100%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="-200" />
+						<Setter Property="TranslateTransform.Y" Value="-200" />
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+
+		<Style Selector="Grid.southwest">
+			<Style.Animations>
+				<Animation Duration="0:0:3" IterationCount="Infinite">
+					<KeyFrame Cue="0%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="0" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+					<KeyFrame Cue="25%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="100" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+					<KeyFrame Cue="50%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="100" />
+						<Setter Property="TranslateTransform.Y" Value="100" />
+					</KeyFrame>
+					<KeyFrame Cue="75%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="200" />
+						<Setter Property="TranslateTransform.Y" Value="100" />
+					</KeyFrame>
+					<KeyFrame Cue="100%" KeySpline="{StaticResource spline}">
+						<Setter Property="TranslateTransform.X" Value="200" />
+						<Setter Property="TranslateTransform.Y" Value="200" />
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+	</Window.Styles>
+
+	<Grid x:Name="mainGrid">
+		<Grid Background="{StaticResource c1}" IsVisible="{Binding IsChecked, ElementName=check_bgA}" />
+		<Grid Background="{StaticResource bgB}" IsVisible="{Binding IsChecked, ElementName=check_bgB}" />
+		<Grid Classes="northeast" Background="{StaticResource fgA}" IsVisible="{Binding IsChecked, ElementName=check_fgA}" />
+		<Grid Classes="southwest" Background="{StaticResource fgB}" IsVisible="{Binding IsChecked, ElementName=check_fgB}" />
+
+		<StackPanel Background="{StaticResource c1}" Width="280" Spacing="8" VerticalAlignment="Top" Orientation="Horizontal">
+			<CheckBox Margin="8,0,0,0" IsChecked="True" x:Name="check_bgA" Content="bgA" />
+			<CheckBox IsChecked="True" x:Name="check_bgB" Content="bgB" />
+			<CheckBox IsChecked="True" x:Name="check_fgA" Content="fgA" />
+			<CheckBox IsChecked="True" x:Name="check_fgB" Content="fgB" />
+		</StackPanel>
+	</Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockPatternAnimation", "BlockPatternAnimation\BlockPatternAnimation.csproj", "{39891255-ED19-41EE-B4C8-B3ECC0E65908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextOutlineAnimation", "TextOutlineAnimation\TextOutlineAnimation.csproj", "{016E5BFB-2C66-4BB5-8AA1-698911ADFCAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39891255-ED19-41EE-B4C8-B3ECC0E65908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39891255-ED19-41EE-B4C8-B3ECC0E65908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39891255-ED19-41EE-B4C8-B3ECC0E65908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39891255-ED19-41EE-B4C8-B3ECC0E65908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016E5BFB-2C66-4BB5-8AA1-698911ADFCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016E5BFB-2C66-4BB5-8AA1-698911ADFCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016E5BFB-2C66-4BB5-8AA1-698911ADFCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016E5BFB-2C66-4BB5-8AA1-698911ADFCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A672C29-35AF-4AC8-B533-D048EB67DFF6}
+	EndGlobalSection
+EndGlobal

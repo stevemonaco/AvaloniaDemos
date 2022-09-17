@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TextOutlineAnimation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:c="using:TextOutlineAnimation.Controls"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TextOutlineAnimation.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+		Background="#aaa7cc"
+        Title="TextOutlineAnimation">
+	<Window.Styles>
+		<Style Selector="c|OutlinedText">
+			<Setter Property="FontSize" Value="160" />
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="TextWrapping" Value="Wrap" />
+			<Setter Property="StrokeThickness" Value="4" />
+			<Setter Property="Stroke">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+						<LinearGradientBrush.GradientStops>
+							<GradientStop Color="Red" Offset="0.0"/>
+							<GradientStop Color="Orange" Offset="0.2"/>
+							<GradientStop Color="Yellow" Offset="0.4"/>
+							<GradientStop Color="Green" Offset="0.6"/>
+							<GradientStop Color="Blue" Offset="0.8"/>
+							<GradientStop Color="Violet" Offset="1.0"/>
+						</LinearGradientBrush.GradientStops>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+
+			<Setter Property="StrokeJoin" Value="Round" />
+			<Setter Property="StrokeLineCap" Value="Round" />
+			<Setter Property="StrokeDashArray" Value="4, 3" />
+
+			<Setter Property="Foreground">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+						<LinearGradientBrush.GradientStops>
+							<GradientStop Color="#023788" Offset="0.0"/>
+							<GradientStop Color="#650D89" Offset="0.2"/>
+							<GradientStop Color="#920075" Offset="0.4"/>
+							<GradientStop Color="#D40078" Offset="0.6"/>
+							<GradientStop Color="#F6019D" Offset="0.8"/>
+							<GradientStop Color="#2E2157" Offset="1.0"/>
+						</LinearGradientBrush.GradientStops>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style Selector="c|OutlinedText.transparent">
+			<Setter Property="Foreground" Value="Transparent" />
+		</Style>
+
+		<Style Selector="c|OutlinedText.animate">
+			<Style.Animations>
+				<Animation Duration="0:0:1" IterationCount="INFINITE">
+					<KeyFrame Cue="0%">
+						<Setter Property="StrokeDashOffset" Value="0" />
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="StrokeDashOffset" Value="7" />
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+	</Window.Styles>
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid RowDefinitions="auto, *">
+		<StackPanel Orientation="Horizontal" Spacing="8">
+			<CheckBox IsChecked="{Binding UseTransparentForeground}" Content="Transparent Foreground" />
+			<CheckBox IsChecked="{Binding UseStrokeAnimation}" Content="Animate Stroke" />
+		</StackPanel>
+		<ScrollViewer Grid.Row="1">
+			<c:OutlinedText Classes.transparent="{Binding UseTransparentForeground}"
+							Classes.animate="{Binding UseStrokeAnimation}"
+							Text="{Binding SampleText}" />
+		</ScrollViewer>
+	</Grid>
+</Window>

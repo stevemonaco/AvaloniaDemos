@@ -8,7 +8,6 @@
 		xmlns:sys="using:System"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BlockPatternAnimation.Views.MainWindow"
-		x:Name="window"
         Icon="/Assets/avalonia-logo.ico"
         Title="BlockPatternAnimation">
 
@@ -119,7 +118,8 @@
 		</Style>
 	</Window.Styles>
 
-	<Grid x:Name="mainGrid">
+	<!-- Negative margin is required so that content is not clipped -->
+	<Grid Margin="-200">
 		<Grid Background="{StaticResource c1}" IsVisible="{Binding IsChecked, ElementName=check_bgA}" />
 		<Grid Background="{StaticResource bgB}" IsVisible="{Binding IsChecked, ElementName=check_bgB}" />
 		<Grid Classes="northeast" Background="{StaticResource fgA}" IsVisible="{Binding IsChecked, ElementName=check_fgA}" />

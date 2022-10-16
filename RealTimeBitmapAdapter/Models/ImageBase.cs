@@ -12,30 +12,13 @@ public abstract class ImageBase<TPixel> where TPixel : struct
     public TPixel[]? Image { get; init; }
 
     /// <summary>
-    /// Width of subsection in pixels
+    /// Width of image in pixels
     /// </summary>
     public int Width { get; protected set; }
     /// <summary>
-    /// Height of subsection in pixels
+    /// Height of image in pixels
     /// </summary>
     public int Height { get; protected set; }
-
-    /// <summary>
-    /// Left edge of subsection in pixel-coordinates
-    /// </summary>
-    public int Left { get; protected set; }
-    /// <summary>
-    /// Top edge of subsection in pixel-coordinates
-    /// </summary>
-    public int Top { get; protected set; }
-    /// <summary>
-    /// Right edge of subsection in pixel-coordinates, inclusive
-    /// </summary>
-    public int Right { get => Left + Width; }
-    /// <summary>
-    /// Bottom edge of subsection in pixel-coordinates, inclusive
-    /// </summary>
-    public int Bottom { get => Top + Height; }
 
     public abstract void Render();
 

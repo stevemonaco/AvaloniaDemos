@@ -6,7 +6,7 @@ using RealTimeBitmapAdapter.ViewModels;
 namespace RealTimeBitmapAdapter;
 public class ViewLocator : IDataTemplate
 {
-    public IControl Build(object? data)
+    public Control Build(object? data)
     {
         if (data is null)
             return new TextBlock { Text = "Null View" };

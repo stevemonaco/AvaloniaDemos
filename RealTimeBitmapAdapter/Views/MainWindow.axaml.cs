@@ -15,7 +15,6 @@ public partial class MainWindow : Window
     private WriteableBitmapAdapter? _wbAdapter;
 
     private readonly DispatcherTimer _renderTimer;
-    private IRenderLoopTask? _renderLoopTask;
     private readonly object _renderLock = new object();
 
     private DateTime _lastFrameUpdate;
@@ -36,7 +35,7 @@ public partial class MainWindow : Window
         _viewModel = viewModel;
 
         RefreshRenderingState();
-        StartRendering();
+        BeginRendering();
 
         base.OnDataContextChanged(e);
     }
@@ -49,7 +48,7 @@ public partial class MainWindow : Window
 
             RefreshRenderingState();
 
-            StartRendering();
+            BeginRendering();
         }
     }
 
@@ -126,12 +125,9 @@ public partial class MainWindow : Window
 
     private void RenderTimer_Tick(object? sender, EventArgs e) => RenderFrame();
 
-    private void StartRendering()
+    private void BeginRendering()
     {
-        if (_viewModel.UseRenderLoop)
-            _renderLoopTask = RenderLoopTaskFunc.Add(time => RenderFrame(), null);
-        else
-            _renderTimer?.Start();
+        _renderTimer?.Start();
     }
 
     private void RefreshRenderingState()
@@ -148,9 +144,6 @@ public partial class MainWindow : Window
 
     private void PauseRendering()
     {
-        if (_renderLoopTask is not null)
-            RenderLoopTaskFunc.Remove(_renderLoopTask);
-
         _renderTimer?.Stop();
     }
 }

@@ -14,8 +14,7 @@ improved if logic/rendering is done directly to the `WriteableBitmap` without th
 
 Some other concepts implemented:
 1. Parallelized or sequential mapping of images
-2. Trigger rendering via `DispatcherTimer` or by `IRenderLoopTask`
-3. Uses SkiaSharp to draw an overlay onto a `WriteableBitmap`
+2. Uses SkiaSharp to draw an overlay onto a `WriteableBitmap`
 
 Finally, the image adapters in the project are a good example of image type conversions. Useful because Avalonia doesn't directly 
 render third-party library image types such as those from `ImageSharp` or `ImageMagick`. For best performance, it should be better to 

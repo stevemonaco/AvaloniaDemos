@@ -1,0 +1,76 @@
+<Window
+    x:Class="Dialogs.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:res="using:Dialogs.Resources"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vm="using:Dialogs.ViewModels"
+    Title="Dialogs"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <Grid Margin="0,0,32,0" ColumnDefinitions="30*,40*,30*">
+        <ScrollViewer Grid.Column="1">
+            <ItemsControl x:Name="items" ItemsSource="{Binding Todos}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel
+                            x:Name="todoRoot"
+                            Margin="8"
+                            Background="Transparent">
+                            <Grid Background="Teal" DockPanel.Dock="Top">
+                                <TextBlock Classes="title" Text="{Binding Activity}" />
+
+                                <Button
+                                    HorizontalAlignment="Right"
+                                    Classes="trash"
+                                    Command="{Binding #items.((vm:MainWindowViewModel)DataContext).DeleteTodoCommand}"
+                                    CommandParameter="{Binding}"
+                                    IsVisible="{Binding #todoRoot.IsPointerOver}">
+                                    <PathIcon Data="{x:Static res:AppIcons.Trash}" ToolTip.Tip="Delete Todo" />
+                                </Button>
+                            </Grid>
+
+                            <StackPanel Background="Black">
+                                <StackPanel Margin="8" Orientation="Horizontal">
+                                    <TextBlock Classes="property" Text="Priority" />
+                                    <ComboBox ItemsSource="{Binding #items.((vm:MainWindowViewModel)DataContext).Priorities}" SelectedItem="{Binding Priority}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate x:DataType="vm:TodoPriority">
+                                                <TextBlock Text="{Binding}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Margin="8" Orientation="Horizontal">
+                                    <TextBlock Classes="property" Text="Completion" />
+                                    <CheckBox IsChecked="{Binding IsCompleted}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button
+            Grid.Column="2"
+            Margin="8"
+            VerticalAlignment="Top"
+            Classes="add"
+            Command="{Binding RequestAddTodoCommand}">
+            <ui:FAPathIcon Data="{x:Static res:AppIcons.Plus}">
+                <ui:FAPathIcon.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                    </Transitions>
+                </ui:FAPathIcon.Transitions>
+            </ui:FAPathIcon>
+        </Button>
+    </Grid>
+</Window>

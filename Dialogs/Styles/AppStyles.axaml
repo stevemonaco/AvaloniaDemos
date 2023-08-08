@@ -1,0 +1,51 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="using:FluentAvalonia.UI.Controls">
+    <Style Selector="Button.trash:pointerover /template/ ui|FABorder#Root">
+        <Setter Property="Background" Value="#DA3633" />
+    </Style>
+    <Style Selector="Button.trash:pressed /template/ ui|FABorder#Root">
+        <Setter Property="Background" Value="#9F0409" />
+    </Style>
+
+    <Style Selector="TextBlock.title">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style Selector="TextBlock.property">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="0,0,8,0" />
+    </Style>
+
+    <Style Selector="Button.add">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Height" Value="84" />
+        <Setter Property="Width" Value="84" />
+        <Setter Property="ToolTip.Tip" Value="Add New Todo" />
+    </Style>
+    <Style Selector="Button.add:pointerover /template/ ui|FABorder#Root">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    <Style Selector="Button.add:pressed /template/ ui|FABorder#Root">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+
+    <Style Selector="Button.add > ui|FAPathIcon">
+        <Setter Property="Foreground" Value="#1a8754" />
+        <Setter Property="RenderTransform" Value="scale(1)" />
+    </Style>
+
+    <Style Selector="Button.add:pointerover > ui|FAPathIcon">
+        <Setter Property="Foreground" Value="#0a683c" />
+    </Style>
+    <Style Selector="Button.add:pressed > ui|FAPathIcon">
+        <Setter Property="RenderTransform" Value="scale(0.75)" />
+    </Style>
+</Styles>

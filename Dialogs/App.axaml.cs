@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Dialogs.Abstractions;
@@ -27,8 +26,6 @@ public partial class App : Application
             services.AddSingleton<IInteractionService, InteractionService>();
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
-            services.AddTransient<UserInformationView>();
-            services.AddTransient<UserInformationViewModel>();
             services.AddSingleton<ViewLocator>();
 
             var provider = services.BuildServiceProvider();

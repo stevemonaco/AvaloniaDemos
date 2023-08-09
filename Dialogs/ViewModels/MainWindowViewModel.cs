@@ -45,7 +45,7 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     public async Task RequestAddTodo()
     {
-        var vm = new TodoEditorViewModel
+        var vm = new TodoEditorViewModel(_interactionService)
         {
             Title = "Add New Todo",
             AcceptName = "Add"

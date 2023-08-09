@@ -39,13 +39,13 @@
 
     <Style Selector="Button.add > ui|FAPathIcon">
         <Setter Property="Foreground" Value="#1a8754" />
-        <Setter Property="RenderTransform" Value="scale(1)" />
+        <Setter Property="RenderTransform" Value="scale(0.8)" />
     </Style>
 
     <Style Selector="Button.add:pointerover > ui|FAPathIcon">
-        <Setter Property="Foreground" Value="#0a683c" />
+        <Setter Property="RenderTransform" Value="scale(1)" />
     </Style>
     <Style Selector="Button.add:pressed > ui|FAPathIcon">
-        <Setter Property="RenderTransform" Value="scale(0.75)" />
+        <Setter Property="Foreground" Value="#0a683c" />
     </Style>
 </Styles>

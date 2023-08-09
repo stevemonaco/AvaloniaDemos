@@ -13,7 +13,6 @@
     <StackPanel Spacing="16">
         <TextBox Text="{Binding Activity}" />
         <StackPanel Orientation="Horizontal" Spacing="8">
-
             <RadioButton
                 Classes="compact"
                 Content="Low"
@@ -31,5 +30,7 @@
                 Content="Urgent"
                 IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static vm:TodoPriority.Urgent}}" />
         </StackPanel>
+
+        <Button Command="{Binding TestAlertCommand}" Content="Test Nested Dialogs" />
     </StackPanel>
 </UserControl>

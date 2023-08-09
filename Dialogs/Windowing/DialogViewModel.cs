@@ -30,7 +30,6 @@ public abstract partial class DialogViewModel<TResult> : ObservableValidator, IR
     /// </summary>
     protected virtual void Cancel()
     {
-        _requestResult = default;
-        OnPropertyChanged(nameof(RequestResult));
+        SetProperty(ref _requestResult, default, false);
     }
 }

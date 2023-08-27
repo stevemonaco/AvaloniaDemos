@@ -4,15 +4,16 @@ using Dialogs.Abstractions;
 using FluentAvalonia.UI.Controls;
 using System;
 using System.Threading.Tasks;
+using Jot;
 
 namespace Dialogs.Services;
 internal class InteractionService : IInteractionService
 {
-    private readonly ViewLocator _viewLocator;
+    private readonly PresentationFactory _presentationFactory;
 
-    public InteractionService(ViewLocator viewLocator)
+    public InteractionService(PresentationFactory presentationFactory, Tracker tracker)
     {
-        _viewLocator = viewLocator;
+        _presentationFactory = presentationFactory;
     }
 
     /// <inheritdoc/>
@@ -68,7 +69,7 @@ internal class InteractionService : IInteractionService
     public async Task<TResult?> RequestAsync<TResult>(IRequestMediator<TResult> mediator)
     {
         await Task.Yield(); // Yield ensures any ContextMenus are closed so focus isn't stolen
-        var content = _viewLocator.Build(mediator);
+        var content = _presentationFactory.ResolveView(mediator);
         content.DataContext = mediator;
 
         var dialog = new ContentDialog()

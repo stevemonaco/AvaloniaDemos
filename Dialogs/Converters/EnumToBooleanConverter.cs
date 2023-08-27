@@ -54,11 +54,14 @@ public class EnumToBooleanConverter : IValueConverter
         if (value is not bool shouldReturnEnum)
             return AvaloniaProperty.UnsetValue;
 
-        if (parameter is string enumTypeString && Enum.TryParse(targetType, enumTypeString, out var enumKind)) // Enum.IsDefined(targetType, parameter))
-            return shouldReturnEnum ? enumKind : BindingOperations.DoNothing;
+        if (!shouldReturnEnum)
+            return BindingOperations.DoNothing;
+
+        if (parameter is string enumTypeString && Enum.TryParse(targetType, enumTypeString, out var enumKind))
+            return enumKind;
 
         if (parameter is not null && Enum.IsDefined(targetType, parameter))
-            return shouldReturnEnum ? parameter : BindingOperations.DoNothing;
+            return parameter;
 
         return AvaloniaProperty.UnsetValue;
     }

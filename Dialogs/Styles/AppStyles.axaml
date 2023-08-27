@@ -1,6 +1,8 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="using:Dialogs.ViewExtenders.Behaviors"
+    xmlns:i="using:Avalonia.Xaml.Interactivity"
     xmlns:ui="using:FluentAvalonia.UI.Controls">
     <Style Selector="Button.trash:pointerover /template/ ui|FABorder#Root">
         <Setter Property="Background" Value="#DA3633" />
@@ -41,7 +43,6 @@
         <Setter Property="Foreground" Value="#1a8754" />
         <Setter Property="RenderTransform" Value="scale(0.8)" />
     </Style>
-
     <Style Selector="Button.add:pointerover > ui|FAPathIcon">
         <Setter Property="RenderTransform" Value="scale(1)" />
     </Style>

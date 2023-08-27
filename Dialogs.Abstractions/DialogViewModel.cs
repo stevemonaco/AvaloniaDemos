@@ -1,11 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Dialogs.Abstractions;
 
-namespace Dialogs;
+namespace Dialogs.Abstractions;
 public abstract partial class DialogViewModel<TResult> : ObservableValidator, IRequestMediator<TResult>
 {
-    [ObservableProperty] protected TResult? _requestResult = default(TResult);
+    [ObservableProperty] protected TResult? _requestResult = default;
     [ObservableProperty] private string _title = "";
 
     private RelayCommand? _acceptCommand;
@@ -14,8 +13,8 @@ public abstract partial class DialogViewModel<TResult> : ObservableValidator, IR
     private RelayCommand? _cancelCommand;
     public IRelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(Cancel);
 
-    public string AcceptName { get; set; } = "Ok";
-    public string CancelName { get; set; } = "Cancel";
+    public string AcceptName { get; init; } = "Ok";
+    public string CancelName { get; init; } = "Cancel";
 
     /// <summary>
     /// Called when the user accepts the interaction
@@ -30,7 +29,6 @@ public abstract partial class DialogViewModel<TResult> : ObservableValidator, IR
     /// </summary>
     protected virtual void Cancel()
     {
-        _requestResult = default;
-        OnPropertyChanged(nameof(RequestResult));
+        SetProperty(ref _requestResult, default, false);
     }
 }

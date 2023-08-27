@@ -5,11 +5,6 @@
     xmlns:fas="using:FluentAvalonia.Styling"
     xmlns:local="using:Dialogs"
     RequestedThemeVariant="Default">
-
-    <Application.DataTemplates>
-        <local:ViewLocator />
-    </Application.DataTemplates>
-
     <Application.Styles>
         <fas:FluentAvaloniaTheme PreferUserAccentColor="True" />
 

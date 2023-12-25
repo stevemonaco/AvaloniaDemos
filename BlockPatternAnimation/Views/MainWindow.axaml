@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="using:System"
-    xmlns:vm="using:BlockPatternAnimation.ViewModels"
     Title="BlockPatternAnimation"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -15,9 +14,7 @@
     mc:Ignorable="d">
 
     <!--  Animation based upon Temani Afif's https://codepen.io/t_afif/full/OJvBbxm  -->
-    <Design.DataContext>
-        <vm:MainWindowViewModel />
-    </Design.DataContext>
+
     <Window.Resources>
         <am:Color x:Key="c1">#C3CCAF</am:Color>
         <am:Color x:Key="c2">#67434F</am:Color>

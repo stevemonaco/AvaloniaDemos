@@ -212,7 +212,7 @@ public partial class InfiniteCanvas : Control
     }
     
     /// <summary>
-    /// Called when the canvas should repaint its surface.
+    /// Called when the app should update its state in preparation for rendering
     /// </summary>
     /// <param name="e">The event args.</param>
     protected virtual void OnUpdateState(UpdateStateEventArgs e)

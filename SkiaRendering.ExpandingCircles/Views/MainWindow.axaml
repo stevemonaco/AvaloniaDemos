@@ -1,0 +1,57 @@
+<Window
+    x:Class="SkiaRendering.ExpandingCircles.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:canvas="using:SkiaRendering.InfiniteCanvas"
+    xmlns:con="using:SkiaRendering.ExpandingCircles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SkiaRendering.ExpandingCircles.ViewModels"
+    Title="SkiaRendering.ExpandingCircles"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="auto,*,auto">
+        <StackPanel
+            Grid.Row="0"
+            Orientation="Horizontal"
+            Spacing="4">
+            <CheckBox
+                x:Name="pauseBox"
+                Content="Pause"
+                IsChecked="True"
+                IsCheckedChanged="PauseBox_OnIsCheckedChanged" />
+            <CheckBox Content="Allow Pan" IsChecked="{Binding #infiniteCanvas.AllowPan}" />
+            <CheckBox Content="Allow Zoom" IsChecked="{Binding #infiniteCanvas.AllowZoom}" />
+            <CheckBox Content="Constrain World" IsChecked="{Binding #infiniteCanvas.EnableConstraints}" />
+        </StackPanel>
+        <canvas:InfiniteCanvas
+            x:Name="infiniteCanvas"
+            Grid.Row="1"
+            EnableConstraints="True"
+            MaxOffsetX="500"
+            MaxOffsetY="500"
+            MaxZoom="8"
+            MinOffsetX="-500"
+            MinOffsetY="-500"
+            MinZoom="0.125"
+            ShowFrameTimings="True" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock x:Name="canvasOriginText" Width="200" />
+            <TextBlock x:Name="mousePositionText" Width="200" />
+            <TextBlock Text="{Binding #infiniteCanvas.Zoom, Converter={x:Static con:AppConverters.DoubleToPercent}, StringFormat='Zoom: {0}'}" />
+        </StackPanel>
+    </Grid>
+
+</Window>

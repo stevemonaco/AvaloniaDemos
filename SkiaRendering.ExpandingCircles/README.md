@@ -2,7 +2,7 @@
 
 ExpandingCircles demonstrates the use of the following:
 
-* InfiniteCanvas control
+* [InfiniteCanvas control](../SkiaRendering.InfiniteCanvas)
 * Hooking up Pointer events to pan and zoom logic
 * Using RenderTrigger.Continuous to update state each frame
 * Using RenderTrigger.Invalidation to render only when visual state is known to have changed
@@ -14,4 +14,4 @@ Controls:
 * Middle Click: Hold and move to pan
 * Mouse Wheel: Zoom In/Out
 
-(Screenshot recorded at 15fps to reduce size)
+(Screenshot recorded at 15fps to reduce image size)

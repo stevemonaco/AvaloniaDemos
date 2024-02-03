@@ -24,7 +24,9 @@ Button.Clip allows setting of a Geometry to clip rendering and hit testing. For 
 
 Inkscape can create SVGs with images. It should be possible to draw paths, save as SVG, and load the SVG to create paths and visual elements from information within the SVG. Likely the better approach if you were making a stadium seating chart interactive with potentially hundreds of hotspots.
 
-## Assets
+## Resources
+
+For tips on tracing into vector graphics, read [So What's the Big Deal with Horizontal & Vertical Bezier Handles Anyway?](https://www.photoshopfaceoff.com/design-tutorials/so-what-s-the-big-deal-with-horizontal-vertical-bezier-handles-anyway.html)
 
 ![Controller Svg](Assets/controller.svg)
 

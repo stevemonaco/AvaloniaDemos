@@ -1,0 +1,247 @@
+<Window
+    x:Class="ImageHotspot.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="window"
+    Title="ImageHotspot"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="Button.hotspot">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+                <Style Selector="^ :is(Shape)">
+                    <Setter Property="Stroke" Value="Black" />
+                    <Setter Property="StrokeThickness" Value="2" />
+                    <Setter Property="Fill" Value="#80806010" />
+                </Style>
+            </Style>
+
+            <Style Selector="^:pressed :is(Shape)">
+                <Setter Property="Fill" Value="#B0106080" />
+            </Style>
+        </Style>
+    </Window.Styles>
+
+    <Viewbox>
+        <Grid>
+            <Image x:Name="image" Source="/Assets/controller.jpg" />
+            <Canvas Width="{Binding #image.Bounds.Width}" Height="{Binding #image.Bounds.Height}">
+                <!--  Dpad  -->
+                <Button
+                    x:Name="buttonUp"
+                    Canvas.Left="148"
+                    Canvas.Top="199"
+                    Width="25"
+                    Height="25"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Rectangle />
+                </Button>
+
+                <Button
+                    x:Name="buttonLeft"
+                    Canvas.Left="127"
+                    Canvas.Top="220"
+                    Width="25"
+                    Height="25"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Rectangle />
+                </Button>
+
+                <Button
+                    x:Name="buttonRight"
+                    Canvas.Left="169"
+                    Canvas.Top="220"
+                    Width="25"
+                    Height="25"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Rectangle />
+                </Button>
+
+                <Button
+                    x:Name="buttonDown"
+                    Canvas.Left="148"
+                    Canvas.Top="241"
+                    Width="25"
+                    Height="25"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Rectangle />
+                </Button>
+
+                <!--  Circular Buttons (B, A, Start, Left Analog, Right Analog)  -->
+                <Button
+                    x:Name="buttonB"
+                    Canvas.Left="310"
+                    Canvas.Top="133"
+                    Width="41"
+                    Height="40"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="21, 21"
+                            RadiusX="20"
+                            RadiusY="20" />
+                    </Button.Clip>
+                    <Ellipse />
+                </Button>
+
+                <Button
+                    x:Name="buttonA"
+                    Canvas.Left="354"
+                    Canvas.Top="95"
+                    Width="61"
+                    Height="61"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="31, 31"
+                            RadiusX="30"
+                            RadiusY="30" />
+                    </Button.Clip>
+                    <Ellipse />
+                </Button>
+
+                <Button
+                    x:Name="buttonStart"
+                    Canvas.Left="225"
+                    Canvas.Top="112"
+                    Width="27"
+                    Height="27"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="13, 13"
+                            RadiusX="14"
+                            RadiusY="14" />
+                    </Button.Clip>
+                    <Ellipse />
+                </Button>
+
+                <Button
+                    x:Name="buttonLeftAnalog"
+                    Canvas.Left="53"
+                    Canvas.Top="88"
+                    Width="77"
+                    Height="77"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="38, 38"
+                            RadiusX="38"
+                            RadiusY="38" />
+                    </Button.Clip>
+                    <Ellipse />
+                </Button>
+
+                <Button
+                    x:Name="buttonRightAnalog"
+                    Canvas.Left="279"
+                    Canvas.Top="193"
+                    Width="76"
+                    Height="76"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="38, 38"
+                            RadiusX="38"
+                            RadiusY="38" />
+                    </Button.Clip>
+                    <Ellipse />
+                </Button>
+
+                <!--  Curved Buttons (L, Y, V, Z, R)  -->
+                <Button
+                    x:Name="buttonL"
+                    Canvas.Left="40"
+                    Canvas.Top="12"
+                    Width="76"
+                    Height="48"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <PathGeometry>m 43.021484,-1.4824219 c -3.70004,0.00337 -7.349236,0.81334258 -10.862169,1.92644804 C 25.207734,2.6487837 19.008717,7.0015602 14.426653,12.658954 8.8891414,19.357758 5.549401,27.476202 2.0956676,35.360056 1.4113009,36.895137 0.697981,38.465 -0.12221649,40.050594 -1.2042389,42.105152 -2.2854969,44.160112 -3.3671875,46.214844 22.495661,34.275105 48.359563,22.337646 74.222656,10.398438 73.010795,8.4780479 71.818057,6.4775872 69.971766,5.0887559 65.868398,1.8149623 60.683093,0.29016832 55.593887,-0.63118647 51.446944,-1.3498171 47.225828,-1.581155 43.021484,-1.4824219 Z</PathGeometry>
+                    </Button.Clip>
+                    <Path Data="M 1.1499307,41.925044 71.295213,9.5459163 C 67.607015,3.3385135 55.133888,-0.29941102 40.300785,0.64165607 12.878346,4.38687 8.2614072,28.900656 1.1499307,41.925044 Z" />
+                </Button>
+
+                <Button
+                    x:Name="buttonY"
+                    Canvas.Left="343"
+                    Canvas.Top="55"
+                    Width="58"
+                    Height="39"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <PathGeometry>m 32.539062,-1 -0.152343,0.0214844 C 26.965403,-0.23449245 21.375305,1.7011078 20.931641,1.8515625 14.737375,3.9521497 7.1681604,7.5873012 2.7714844,13.458984 0.4935553,16.501118 -0.95163677,20.097875 -0.99804688,24.414062 l -0.003906,0.308594 0.0917968,0.296875 C 1.6911965,33.548325 8.4492189,37.080078 8.449219,37.080078 c 1.759503,0.910703 3.775732,1.473728 6.080078,1.480469 6.520983,0.209701 13.13556,-6.418384 19.560547,-7.195313 l 10.11914,-0.201172 -0.173828,-0.171874 c 1.460937,0.04695 3.40076,-0.730275 4.617188,-1.363282 3.400306,-1.769456 7.63127,-5.403195 7.789062,-12.519531 0.130638,-2.683692 -1.073854,-5.822704 -1.3125,-6.382813 C 53.621056,7.1875935 50.602304,3.2842822 44.302734,0.95117188 41.215056,-0.1923814 37.401642,-0.91247611 32.695312,-0.99804688 Z m 23.902344,18.109375 c -5.11e-4,0.0105 0.0045,0.02076 0.0039,0.03125 l 0.002,-0.06641 c -2.66e-4,0.01328 -0.0056,0.0219 -0.0059,0.03516 z M 14.529297,38.560547 c -0.01102,-3.54e-4 -0.02218,0.0023 -0.0332,0.002 l 0.07226,0.002 c -0.01385,0 -0.02523,-0.0039 -0.03906,-0.0039 z</PathGeometry>
+                    </Button.Clip>
+                    <Path Data="M 1.001605,24.435342 C 1.207165,5.3180506 32.658195,1.0012426 32.658195,1.0012426 c 22.61185,0.411125 21.7896,16.0338584 21.7896,16.0338584 -0.20556,10.278114 -10.27811,12.128174 -10.27811,12.128174 l -10.27811,0.205562 c -6.98912,0.822249 -13.56712,7.400242 -19.32286,7.19468 -9.86699,0 -13.56711,-12.128175 -13.56711,-12.128175 z" />
+                </Button>
+
+                <Button
+                    x:Name="buttonX"
+                    Canvas.Left="418"
+                    Canvas.Top="87"
+                    Width="41"
+                    Height="60"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <PathGeometry>m 12.712891,-1.0039062 -0.210938,0.009766 C 9.3103619,-0.86387158 6.7666179,0.01705605 4.7714844,1.4453125 3.1837974,2.5818901 2.0247571,4.0062103 1.1816406,5.5332031 c 0,0 -3.2106039,5.8526789 -1.9082031,13.5371089 l 0.09375,0.550782 0.3671875,0.423828 c 4.3242713,4.997543 8.1033177,13.809868 7.0761719,27.320312 l -0.066406,0.863282 0.5839844,0.636718 c 6.6421487,7.27446 14.1816407,7.626953 14.1816407,7.626954 l 0.06055,0.002 h 0.06055 c 3.642156,-0.06504 6.520831,-1.042363 8.84961,-2.683594 1.833846,-1.292422 3.215358,-2.936993 4.251953,-4.703125 0,0 3.981927,-6.854697 3.099609,-16.009766 C 37.202242,18.272533 31.163254,9.7700532 25.021484,4.8886719 24.449517,4.4340809 18.610954,0.00599955 12.921875,-0.96679688 Z m 25.11914,34.1015622 c 0.0014,0.03222 0.0065,0.05952 0.0078,0.0918 l -0.0078,-0.111328 c 6.83e-4,0.007 -6.76e-4,0.01251 0,0.01953 z</PathGeometry>
+                    </Button.Clip>
+                    <Path Data="M 12.584573,1.0034703 C -1.6601669,1.5848882 1.2469232,18.736716 1.2469232,18.736716 c 4.7307599,5.46732 8.6207399,14.80735 7.5584399,28.78019 0,0 6.1048799,6.6863 12.7911899,6.97701 16.2797,-0.29071 14.24474,-21.22175 14.24474,-21.22175 C 34.678453,4.7826882 12.584573,1.0034703 12.584573,1.0034703 Z" />
+                </Button>
+
+                <Button
+                    x:Name="buttonZ"
+                    Canvas.Left="355"
+                    Canvas.Top="16"
+                    Width="85"
+                    Height="43"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <PathGeometry>M 3.2460938,-1 -1.8125,4.0585938 1.1210938,5.1386719 C 23.011953,13.205387 44.496418,20.909414 74.134766,39.490234 l 0.28125,0.175782 0.322265,0.07617 c 3.328797,0.78449 5.914965,-2.681541 5.748047,-9.191407 l -0.01758,-0.691406 -0.441406,-0.53125 C 74.906339,23.130792 64.892937,16.391615 61.039062,14.083984 48.409343,6.5215359 29.469795,-1 4.0742188,-1 Z</PathGeometry>
+                    </Button.Clip>
+                    <Path Data="M 4.0733612,1 C 54.024991,1 78.486901,30.600967 78.486901,30.600967 c 0.20556,8.016929 -3.289,7.194679 -3.289,7.194679 C 45.322561,19.066251 23.685711,11.321513 1.8121712,3.261185 Z" />
+                </Button>
+
+                <Button
+                    x:Name="buttonR"
+                    Canvas.Left="365"
+                    Canvas.Top="11"
+                    Width="80"
+                    Height="31"
+                    Classes="hotspot"
+                    Click="Controller_Click">
+                    <Button.Clip>
+                        <PathGeometry>M 22.197266,-1 -17.835938,9.0097656 0.29296875,8.5507812 C 16.132703,8.1497748 30.297498,12.862261 40.550781,17.710938 c 2.124384,1.0046 10.95238,5.409505 16.419922,9.730468 l 2.958985,-2.591797 C 58.507187,22.458976 57.174563,20.754398 56.027344,19.275391 53.538793,16.067124 49.893777,11.902992 45.355469,8.2050781 39.28402,3.2579276 31.443208,-1 22.443359,-1 Z</PathGeometry>
+                    </Button.Clip>
+                    <Path Data="M 0.24253567,6.550181 22.443256,1 c 20.96735,0 35.76784,24.873035 35.76784,24.873035 0,0 -25.489721,-20.145103 -57.96856033,-19.322854 z" />
+                </Button>
+            </Canvas>
+
+            <TextBlock
+                x:Name="lastPress"
+                FontSize="24"
+                Foreground="Orange" />
+        </Grid>
+    </Viewbox>
+</Window>

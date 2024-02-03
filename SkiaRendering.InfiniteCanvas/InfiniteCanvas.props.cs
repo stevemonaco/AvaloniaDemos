@@ -17,7 +17,6 @@ public partial class InfiniteCanvas
     private double _zoomPower = 2d;
     private double _offsetX;
     private double _offsetY;
-    private bool _captured = false;
 
     public static readonly StyledProperty<double> ZoomProperty =
         AvaloniaProperty.Register<InfiniteCanvas, double>(nameof(Zoom), 1d, false, BindingMode.TwoWay);

@@ -3,6 +3,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<LangVersion>12</LangVersion>
 		<Nullable>enable</Nullable>
-		<AvaloniaVersion>11.0.6</AvaloniaVersion>
+		<AvaloniaVersion>11.0.7</AvaloniaVersion>
 	</PropertyGroup>
 </Project>

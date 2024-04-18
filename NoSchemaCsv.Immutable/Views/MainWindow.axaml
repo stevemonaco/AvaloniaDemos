@@ -12,8 +12,10 @@
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
     <Grid RowDefinitions="auto,*">
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Command="{Binding LoadRandomizedCsvCommand}" Content="Load Randomized CSV" />
+            <TextBlock Margin="12,0,0,0" Text="Generated Rows: " VerticalAlignment="Center" />
+            <NumericUpDown Value="{Binding RowsToGenerate}" />
         </StackPanel>
         <TreeDataGrid x:Name="tree" Grid.Row="1" />
     </Grid>

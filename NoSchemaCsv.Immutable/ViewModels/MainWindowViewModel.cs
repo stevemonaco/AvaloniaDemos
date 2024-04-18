@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using NoSchemaCsv.Immutable.Services;
 
@@ -12,10 +13,12 @@ public partial class MainWindowViewModel(CsvService csvService, CsvGeneratorServ
     // exposing the model to the View is low impact
     public CsvModel? CsvModel { get; private set; }
 
+    [ObservableProperty] private int _rowsToGenerate = 200;
+
     [RelayCommand]
     public void LoadRandomizedCsv()
     {
-        var csvContent = _generatorService.GenerateCsv(200);
+        var csvContent = _generatorService.GenerateCsv(RowsToGenerate);
         var records = _csvService.ReadCsvContent(csvContent);
 
         CsvModel = records;

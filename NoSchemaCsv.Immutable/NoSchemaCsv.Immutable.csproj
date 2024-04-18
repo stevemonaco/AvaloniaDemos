@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaResource Remove="Assets\noschemacsv-immutable.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.1.0-beta1" />
     <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.0.2" />
     <PackageReference Include="Avalonia.Desktop" Version="11.1.0-beta1" />

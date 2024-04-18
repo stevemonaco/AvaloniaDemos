@@ -1,7 +1,6 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Rendering;
 using Avalonia.Threading;
 using RealTimeBitmapAdapter.ImageAdapters;
 using RealTimeBitmapAdapter.Models;

@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Rendering.SceneGraph;
@@ -28,8 +27,7 @@ public partial class SkiaBitmapView : UserControl
 
     private void SkiaImageView_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var lifetime = (IClassicDesktopStyleApplicationLifetime)Application.Current?.ApplicationLifetime!;
-        _topLevel = TopLevel.GetTopLevel(lifetime.MainWindow)!;
+        _topLevel = TopLevel.GetTopLevel(this)!;
         _topLevel.RequestAnimationFrame(PrepareFrame);
     }
 

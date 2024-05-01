@@ -1,0 +1,78 @@
+<Window
+    x:Class="Debugging.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Debugging.ViewModels"
+    Title="Debugging"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="auto, *, auto, auto">
+        <StackPanel Orientation="Horizontal" Spacing="4">
+            <Button
+                x:Name="listAssembliesButton"
+                Command="{Binding ListAssembliesCommand}"
+                Content="List Assemblies" />
+            <Button
+                x:Name="listAssetsButton"
+                Command="{Binding ListAssetsCommand}"
+                Content="List Assets" />
+            <Button
+                x:Name="listFontIdNamesButton"
+                Command="{Binding ListFontIdNamesCommand}"
+                Content="List Font Id Names" />
+            <TextBox
+                x:Name="fontAssetUriInput"
+                MinWidth="400"
+                Text="{Binding FontUri}"
+                Watermark="Font Asset Uri" />
+            <Button
+                x:Name="badButton"
+                Command="{ReflectionBinding BadBinding}"
+                Content="Bad Binding"
+                ToolTip.Tip="This control intentionally has a bad binding for demo purposes. Lookup its logged hash id below." />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Margin="8,0,0,0">
+            <ItemsControl ItemsSource="{Binding Display}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <SelectableTextBlock FontFamily="{StaticResource JetBrainsMono}" Text="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="8,0,0,0"
+            Orientation="Horizontal"
+            Spacing="4">
+            <TextBlock VerticalAlignment="Center" Text="Ctrl + Left Click to Find Control Hash ID" />
+            <TextBox x:Name="controlHashInput" MinWidth="200" />
+            <Button
+                x:Name="controlSearchButton"
+                Click="Search_Click"
+                Content="Find" />
+        </StackPanel>
+        <TextBlock
+            x:Name="searchResult"
+            Grid.Row="3"
+            MinHeight="100"
+            Margin="8,0,0,8" />
+    </Grid>
+
+</Window>

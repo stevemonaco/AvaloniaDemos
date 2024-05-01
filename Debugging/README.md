@@ -22,7 +22,7 @@ should be by reading the Name IDs from a font included as an asset and provides 
 * Customized ILogSink with Visual Tree Information
 * Lookup Control via Hash ID
 
-Locating the source of bad bindings has a long-running problem, mitigated by use of compiled bindings more recently. However, this can still be an issue. Avalonia logs 
+Locating the source of bad bindings has been a long-running problem, mitigated by use of compiled bindings more recently. However, it's still occasionally an issue. Avalonia logs 
 these binding errors and prints out the Hash ID when the Control containing the bad binding doesn't have a name. `DebugPlusLogSink` changes this so that all events will 
 log the Hash ID, Name (if available), and the Visual Tree hierarchy.
 

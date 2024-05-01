@@ -3,6 +3,5 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<LangVersion>12</LangVersion>
 		<Nullable>enable</Nullable>
-		<AvaloniaVersion>11.1.0-beta2</AvaloniaVersion>
 	</PropertyGroup>
 </Project>

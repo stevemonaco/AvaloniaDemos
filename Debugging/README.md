@@ -29,3 +29,8 @@ log the Hash ID, Name (if available), and the Visual Tree hierarchy.
 When you have the Control Hash ID, you can locate the actual Control by searching the Visual Tree. The capture below demonstrates this.
 
 ![Bad Binding Lookup](Assets/logFindScreenCapture.gif)
+
+The logged message is:
+```
+[Binding]An error occurred binding 'Command' to 'BadBinding' at 'BadBinding': 'Could not find a matching property accessor for 'BadBinding' on 'Debugging.ViewModels.MainWindowViewModel'.' (Button #36936550 #badButton Visual Tree: Grid -> StackPanel -> Button)
+```

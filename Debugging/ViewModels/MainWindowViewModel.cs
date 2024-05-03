@@ -11,7 +11,7 @@ namespace Debugging.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty] private ObservableCollection<string> _display = new();
-    [ObservableProperty] private bool _filterResourceXamlInfo = true;
+    [ObservableProperty] private bool _filterResourceXamlInfo = false;
     [ObservableProperty] private string _fontUri = "";
 
     [RelayCommand]
@@ -31,7 +31,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Display.Clear();
 
         var infos = DebugPlus.GetAllAssetInfo()
-            .Where(x => FilterResourceXamlInfo && !x.Uri.AbsolutePath.Contains("!AvaloniaResourceXamlInfo"));
+            .Where(x => FilterResourceXamlInfo ? !x.Uri.AbsolutePath.Contains("!AvaloniaResourceXamlInfo") : true);
 
         foreach (var info in infos)
         {

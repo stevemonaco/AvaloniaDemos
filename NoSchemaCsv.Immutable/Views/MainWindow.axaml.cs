@@ -36,7 +36,7 @@ public partial class MainWindow : Window
         // There's no specific type information provided (eg. numeric types), but this is an immutable viewer.
         // You would need to write an autodetection heuristic or allow the user to specify how columns operate.
         source.Columns.AddRange(model.Header.HeaderNames.Skip(1).Select((x, i) =>
-                new TextColumn<CsvRecord, string>(x, record => record.Items[i])
+                new TextColumn<CsvRecord, string>(x, record => record.Items[i], width: GridLength.Star)
         ));
 
         source.Items = model.Records;

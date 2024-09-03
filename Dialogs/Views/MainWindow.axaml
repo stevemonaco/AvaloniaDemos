@@ -13,7 +13,10 @@
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
-    <Grid Focusable="True" Margin="0,0,32,0" ColumnDefinitions="30*,40*,30*">
+    <Grid
+        Margin="0,0,32,0"
+        ColumnDefinitions="30*,40*,30*"
+        Focusable="True">
         <ScrollViewer Grid.Column="1">
             <ItemsControl x:Name="items" ItemsSource="{Binding Todos}">
                 <ItemsControl.ItemTemplate>
@@ -22,7 +25,7 @@
                             x:Name="todoRoot"
                             Margin="8"
                             Background="Transparent">
-                            <Grid Background="Teal" DockPanel.Dock="Top">
+                            <Grid x:Name="titleGrid" Background="Teal" DockPanel.Dock="Top">
                                 <TextBlock Classes="title" Text="{Binding Activity}" />
 
                                 <Button
@@ -30,8 +33,9 @@
                                     Classes="trash"
                                     Command="{Binding #items.((vm:MainWindowViewModel)DataContext).DeleteTodoCommand}"
                                     CommandParameter="{Binding}"
-                                    IsVisible="{Binding #todoRoot.IsPointerOver}">
-                                    <PathIcon Data="{x:Static res:AppIcons.Trash}" ToolTip.Tip="Delete Todo" />
+                                    IsVisible="{Binding #titleGrid.IsPointerOver}"
+                                    ToolTip.Tip="Delete Todo">
+                                    <PathIcon Data="{x:Static res:AppIcons.Trash}" />
                                 </Button>
                             </Grid>
 

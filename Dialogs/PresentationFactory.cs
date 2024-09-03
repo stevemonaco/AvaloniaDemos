@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Dialogs;
+
+/// <summary>
+/// Creates instances of ViewModels and Views by type, along with type-based ViewModel -> View resolution
+/// </summary>
 public class PresentationFactory
 {
     private Dictionary<Type, Func<Control>> _locatorFactory = new();

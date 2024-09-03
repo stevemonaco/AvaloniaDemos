@@ -2,11 +2,15 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:FluentAvalonia.UI.Controls">
+    <Style Selector="Button.trash /template/ ui|FABorder#Root">
+        <Setter Property="Background" Value="#00DA3633" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
     <Style Selector="Button.trash:pointerover /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="#DA3633" />
+        <Setter Property="Background" Value="#FFDA3633" />
     </Style>
     <Style Selector="Button.trash:pressed /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="#9F0409" />
+        <Setter Property="Background" Value="#FF9F0409" />
     </Style>
 
     <Style Selector="TextBlock.title">
@@ -19,6 +23,7 @@
     <Style Selector="TextBlock.property">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style Selector="Button.add">

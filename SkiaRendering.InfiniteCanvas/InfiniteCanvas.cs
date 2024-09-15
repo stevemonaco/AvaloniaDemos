@@ -14,6 +14,7 @@ using SkiaSharp;
 namespace SkiaRendering.InfiniteCanvas;
 
 public enum RenderTrigger { Continuous, Invalidation }
+public enum PointAlignment { TopLeft, Left, BottomLeft, Top, Center, Bottom, TopRight, Right, BottomRight }
 
 /// <summary>
 /// Supports panning, zooming, and rendering to an SkCanvas
@@ -54,6 +55,11 @@ public partial class InfiniteCanvas : Control
         
         if (RenderTrigger == RenderTrigger.Continuous)
             _topLevel!.RequestAnimationFrame(PrepareFrame);
+    }
+
+    protected override void OnDataContextBeginUpdate()
+    {
+        base.OnDataContextBeginUpdate();
     }
 
     public override void Render(DrawingContext context)
@@ -97,7 +103,14 @@ public partial class InfiniteCanvas : Control
     protected override void OnUnloaded(RoutedEventArgs e)
     {
         base.OnUnloaded(e);
+
+        _renderStopwatch.Stop();
+        _frameTextFill?.Dispose();
+        _frameTextFont?.Dispose();
         _bitmap?.Dispose();
+
+        _frameTextFill = null;
+        _frameTextFont = null;
         _bitmap = null;
     }
 
@@ -178,6 +191,13 @@ public partial class InfiniteCanvas : Control
         }
     }
 
+    /// <summary>
+    /// Renders performance metrics as an overlay
+    /// </summary>
+    /// <param name="surface">Surface to draw onto</param>
+    /// <param name="setupTime">Time between RepaintSurface starting and OnPaintSurface being called</param>
+    /// <param name="renderTime">Time taken by OnPaintSurface</param>
+    /// <param name="totalTime">Total time to render a frame</param>
     protected virtual void RenderFrameTimings(SKSurface surface, TimeSpan setupTime, TimeSpan renderTime, TimeSpan totalTime)
     {
         _frameTextFill ??= new SKPaint()
@@ -256,6 +276,9 @@ public partial class InfiniteCanvas : Control
         }
     }
 
+    /// <summary>
+    /// Starts a pan operation with the given origin
+    /// </summary>
     public void StartPan(Point panDragOrigin)
     {
         _isPanning = true;
@@ -263,6 +286,9 @@ public partial class InfiniteCanvas : Control
         _panCanvasOrigin = new(OffsetX, OffsetY);
     }
 
+    /// <summary>
+    /// Ends a pan operation
+    /// </summary>
     public void EndPan()
     {
         _isPanning = false;
@@ -270,6 +296,9 @@ public partial class InfiniteCanvas : Control
         _panCanvasOrigin = null;
     }
 
+    /// <summary>
+    /// Zooms in while preserving the existing OffsetX and OffsetY
+    /// </summary>
     public void ZoomIn()
     {
         if (!AllowZoom)
@@ -279,6 +308,9 @@ public partial class InfiniteCanvas : Control
         Invalidate();
     }
 
+    /// <summary>
+    /// Zooms out while preserving the existing OffsetX and OffsetY
+    /// </summary>
     public void ZoomOut()
     {
         if (!AllowZoom)
@@ -287,11 +319,110 @@ public partial class InfiniteCanvas : Control
         Zoom = Math.Clamp(Zoom / ZoomPower - ZoomIncrement, MinZoom, MaxZoom);
         Invalidate();
     }
-    
+
+    /// <summary>
+    /// Zooms in and centers the viewport around the specified location
+    /// </summary>
+    public void ZoomInOnCenter(Point center)
+    {
+        if (!AllowZoom)
+            return;
+
+        var local = ScreenToLocalPoint(center);
+
+        var oldZoom = Zoom;
+        Zoom = Math.Clamp(Zoom * ZoomPower + ZoomIncrement, MinZoom, MaxZoom);
+
+        if (Math.Abs(oldZoom - Zoom) / Zoom < 0.001)
+            return;
+
+        var zoomedLocation = local * Zoom;
+
+        var zoomedWidth = Bounds.Width * oldZoom / Zoom;
+        var zoomedHeight = Bounds.Height * oldZoom / Zoom;
+
+        OffsetX = zoomedLocation.X - zoomedWidth;
+        OffsetY = zoomedLocation.Y - zoomedHeight;
+
+        Invalidate();
+    }
+
+    /// <summary>
+    /// Zooms out and centers the viewport around the specified location
+    /// </summary>
+    public void ZoomOutOnCenter(Point center)
+    {
+        if (!AllowZoom)
+            return;
+
+        var local = ScreenToLocalPoint(center);
+
+        var oldZoom = Zoom;
+        Zoom = Math.Clamp(Zoom / ZoomPower - ZoomIncrement, MinZoom, MaxZoom);
+
+        if (Math.Abs(oldZoom - Zoom) / Zoom < 0.001)
+            return;
+
+        var zoomedLocation = local * Zoom;
+
+        var zoomedWidth = Bounds.Width * Zoom / oldZoom;
+        var zoomedHeight = Bounds.Height * Zoom / oldZoom;
+
+        OffsetX = zoomedLocation.X - zoomedWidth;
+        OffsetY = zoomedLocation.Y - zoomedHeight;
+
+        Invalidate();
+    }
+
+    /// <summary>
+    /// Moves the viewport to a location
+    /// </summary>
+    /// <param name="location">Specified location in absolute canvas coordinates</param>
+    /// <param name="alignment">Positions the Viewport so the specified point appears in a certain spot</param>
+    /// <exception cref="NotSupportedException"></exception>
+    public void MoveToPoint(Point location, PointAlignment alignment)
+    {
+        var (lx0, ly0) = location;
+        var width = Bounds.Width;
+        var height = Bounds.Height;
+
+        (double x, double y) = alignment switch
+        {
+            PointAlignment.TopLeft => (lx0, ly0),
+            PointAlignment.Left => (lx0, ly0 - height * 0.5),
+            PointAlignment.BottomLeft => (lx0, ly0 - height),
+            PointAlignment.Top => (lx0 - width * 0.5, ly0),
+            PointAlignment.Center => (lx0 - width * 0.5, ly0 - height * 0.5),
+            PointAlignment.Bottom => (lx0 - width * 0.5, ly0 - height),
+            PointAlignment.TopRight => (lx0 - width, ly0),
+            PointAlignment.Right => (lx0 - width, ly0 - height * 0.5),
+            PointAlignment.BottomRight => (lx0 - width, ly0 - height),
+            _ => throw new NotSupportedException()
+        };
+
+        OffsetX = x;
+        OffsetY = y;
+
+        Invalidate();
+    }
+
+    /// <summary>
+    /// Transforms a canvas location into a local coordinate (before scaling)
+    /// </summary>
     public Point ScreenToLocalPoint(Point screen)
     {
         var x = (screen.X + OffsetX) / Zoom;
         var y = (screen.Y + OffsetY) / Zoom;
+        return new Point(x, y);
+    }
+
+    /// <summary>
+    /// Transforms a canvas location into an absolute canvas coordinate (after scaling)
+    /// </summary>
+    public Point ScreenToAbsolutePoint(Point screen)
+    {
+        var x = screen.X + OffsetX;
+        var y = screen.Y + OffsetY;
         return new Point(x, y);
     }
 }

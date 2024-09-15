@@ -2,7 +2,6 @@
 using Avalonia.Data;
 
 namespace SkiaRendering.InfiniteCanvas;
-
 public partial class InfiniteCanvas
 {
     static InfiniteCanvas()
@@ -17,16 +16,17 @@ public partial class InfiniteCanvas
     private double _zoomPower = 2d;
     private double _offsetX;
     private double _offsetY;
+    private bool _captured = false;
 
     public static readonly StyledProperty<double> ZoomProperty =
         AvaloniaProperty.Register<InfiniteCanvas, double>(nameof(Zoom), 1d, false, BindingMode.TwoWay);
-    
+
     public static readonly DirectProperty<InfiniteCanvas, double> ZoomPowerProperty =
         AvaloniaProperty.RegisterDirect<InfiniteCanvas, double>(nameof(ZoomPower), o => o._zoomPower, (o, v) => o._zoomPower = v, 2.0);
-    
+
     public static readonly DirectProperty<InfiniteCanvas, double> ZoomIncrementProperty =
         AvaloniaProperty.RegisterDirect<InfiniteCanvas, double>(nameof(ZoomIncrement), o => o._zoomIncrement, (o, v) => o._zoomIncrement = v, 0.0);
-    
+
     public static readonly DirectProperty<InfiniteCanvas, double> OffsetXProperty =
         AvaloniaProperty.RegisterDirect<InfiniteCanvas, double>(nameof(OffsetX), o => o.OffsetX, null, 0.0);
 
@@ -74,7 +74,7 @@ public partial class InfiniteCanvas
         get => GetValue(ZoomProperty);
         set => SetValue(ZoomProperty, value);
     }
-    
+
     /// <summary>
     /// Gets or sets the zoom power (multiplier).
     /// </summary>
@@ -83,7 +83,7 @@ public partial class InfiniteCanvas
         get => _zoomPower;
         set => SetAndRaise(ZoomPowerProperty, ref _zoomPower, value);
     }
-    
+
     /// <summary>
     /// Gets or sets the zoom increment (addition).
     /// </summary>
@@ -94,7 +94,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets the pan offset for x axis.
+    /// Gets or sets the pan offset for x-axis in zoomed coordinates from the rendered content to the left edge of the canvas.
     /// </summary>
     public double OffsetX
     {
@@ -103,7 +103,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets the pan offset for y axis.
+    /// Gets or sets the pan offset for y-axis in zoomed coordinates from the rendered content to the left edge of the canvas.
     /// </summary>
     public double OffsetY
     {
@@ -112,7 +112,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets flag indicating whether zoom ratio and pan offset constrains are applied.
+    /// Gets or sets flag indicating whether zoom ratio and pan offset constraints are applied.
     /// </summary>
     public bool EnableConstraints
     {
@@ -121,7 +121,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets minimum zoom ratio for x axis.
+    /// Gets or sets minimum zoom ratio
     /// </summary>
     public double MinZoom
     {
@@ -130,7 +130,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets maximum zoom ratio for y axis.
+    /// Gets or sets maximum zoom ratio
     /// </summary>
     public double MaxZoom
     {
@@ -139,7 +139,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets minimum offset for x axis.
+    /// Gets or sets minimum offset for x-axis.
     /// </summary>
     public double MinOffsetX
     {
@@ -148,7 +148,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets maximum offset for x axis.
+    /// Gets or sets maximum offset for x-axis.
     /// </summary>
     public double MaxOffsetX
     {
@@ -157,7 +157,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets minimum offset for y axis.
+    /// Gets or sets minimum offset for y-axis.
     /// </summary>
     public double MinOffsetY
     {
@@ -166,7 +166,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets maximum offset for y axis.
+    /// Gets or sets maximum offset for y-axis.
     /// </summary>
     public double MaxOffsetY
     {
@@ -202,7 +202,7 @@ public partial class InfiniteCanvas
     }
 
     /// <summary>
-    /// Gets or sets trigger for rendering
+    /// Gets or sets trigger mechanism for rendering
     /// </summary>
     public RenderTrigger RenderTrigger
     {

@@ -113,13 +113,15 @@ public partial class MainWindow : Window
     {
         base.OnPointerWheelChanged(e);
 
+        var location = e.GetPosition(infiniteCanvas);
+
         if (e.Delta.Y > 0)
         {
-            infiniteCanvas.ZoomIn();
+            infiniteCanvas.ZoomInOnCenter(location);
         }
         else if (e.Delta.Y < 0)
         {
-            infiniteCanvas.ZoomOut();
+            infiniteCanvas.ZoomOutOnCenter(location);
         }
 
         e.Handled = true;

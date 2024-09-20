@@ -21,10 +21,10 @@ public partial class TextHighlightBlock : SelectableTextBlock
 
     protected void BuildHighlightRanges()
     {
+        _highlightRangeCache.Clear();
+
         if (string.IsNullOrEmpty(Text) || string.IsNullOrEmpty(Pattern))
             return;
-
-        _highlightRangeCache.Clear();
 
         if (UseRegex)
             BuildRegexRanges();

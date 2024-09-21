@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:con="using:Dialogs.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:Dialogs.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Dialogs.ViewModels"
     d:DesignHeight="450"
@@ -16,19 +17,19 @@
             <RadioButton
                 Classes="compact"
                 Content="Low"
-                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static vm:TodoPriority.Low}}" />
+                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static m:TodoPriority.Low}}" />
             <RadioButton
                 Classes="compact"
                 Content="Medium"
-                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static vm:TodoPriority.Medium}}" />
+                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static m:TodoPriority.Medium}}" />
             <RadioButton
                 Classes="compact"
                 Content="High"
-                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static vm:TodoPriority.High}}" />
+                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static m:TodoPriority.High}}" />
             <RadioButton
                 Classes="compact"
                 Content="Urgent"
-                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static vm:TodoPriority.Urgent}}" />
+                IsChecked="{Binding Priority, Mode=TwoWay, Converter={x:Static con:AppConverters.EnumToBoolean}, ConverterParameter={x:Static m:TodoPriority.Urgent}}" />
         </StackPanel>
 
         <Button Command="{Binding TestAlertCommand}" Content="Test Nested Dialogs" />

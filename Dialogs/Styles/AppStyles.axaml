@@ -1,16 +1,18 @@
-<Styles
-    xmlns="https://github.com/avaloniaui"
+<Styles xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:FluentAvalonia.UI.Controls">
-    <Style Selector="Button.trash /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="#00DA3633" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-    </Style>
-    <Style Selector="Button.trash:pointerover /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="#FFDA3633" />
-    </Style>
-    <Style Selector="Button.trash:pressed /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="#FF9F0409" />
+
+    <Style Selector="Button.trash">
+        <Style Selector="^ /template/ ui|FABorder#Root">
+            <Setter Property="Background" Value="#00DA3633" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ui|FABorder#Root">
+            <Setter Property="Background" Value="#FFDA3633" />
+        </Style>
+        <Style Selector="^:pressed /template/ ui|FABorder#Root">
+            <Setter Property="Background" Value="#FF9F0409" />
+        </Style>
     </Style>
 
     <Style Selector="TextBlock.title">
@@ -26,30 +28,19 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style Selector="Button.add">
+    <Style Selector="Button.menuicon">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Height" Value="84" />
-        <Setter Property="Width" Value="84" />
-        <Setter Property="ToolTip.Tip" Value="Add New Todo" />
-    </Style>
-    <Style Selector="Button.add:pointerover /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-    </Style>
-    <Style Selector="Button.add:pressed /template/ ui|FABorder#Root">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-    </Style>
+        <Setter Property="Height" Value="88" />
+        <Setter Property="Width" Value="64" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
 
-    <Style Selector="Button.add > ui|FAPathIcon">
-        <Setter Property="Foreground" Value="#1a8754" />
-        <Setter Property="RenderTransform" Value="scale(0.8)" />
-    </Style>
-    <Style Selector="Button.add:pointerover > ui|FAPathIcon">
-        <Setter Property="RenderTransform" Value="scale(1)" />
-    </Style>
-    <Style Selector="Button.add:pressed > ui|FAPathIcon">
-        <Setter Property="Foreground" Value="#0a683c" />
+        <Style Selector="^ ui|FAPathIcon">
+            <Setter Property="RenderTransform" Value="scale(0.8)" />
+        </Style>
+        <Style Selector="^:pointerover ui|FAPathIcon">
+            <Setter Property="RenderTransform" Value="scale(1)" />
+        </Style>
     </Style>
 </Styles>

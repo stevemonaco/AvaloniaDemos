@@ -26,4 +26,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Dialogs.Abstractions\Dialogs.Abstractions.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_data\" />
+  </ItemGroup>
 </Project>

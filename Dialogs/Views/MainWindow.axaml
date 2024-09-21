@@ -1,39 +1,50 @@
-<Window
-    x:Class="Dialogs.Views.MainWindow"
+<Window x:Class="Dialogs.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:Dialogs.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:res="using:Dialogs.Resources"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:vm="using:Dialogs.ViewModels"
-    Title="Dialogs"
+    Title="Dialogs.Todo"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
-    <Grid
-        Margin="0,0,32,0"
-        ColumnDefinitions="30*,40*,30*"
-        Focusable="True">
-        <ScrollViewer Grid.Column="1">
+    <Grid Margin="0,0,32,0" ColumnDefinitions="25*,50*,25*" Focusable="True" RowDefinitions="auto, *">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
+            <Button Classes="menuicon" Command="{Binding RequestSaveTodosCommand}" ToolTip.Tip="Save Todos">
+                <StackPanel Spacing="4">
+                    <ui:FAPathIcon Data="{x:Static res:AppIcons.Save}" />
+                    <TextBlock HorizontalAlignment="Center" Text="Save" />
+                </StackPanel>
+            </Button>
+            <Button Classes="menuicon" Command="{Binding RequestLoadTodosCommand}" ToolTip.Tip="Load Todos">
+                <StackPanel Spacing="4">
+                    <ui:FAPathIcon Data="{x:Static res:AppIcons.Load}" />
+                    <TextBlock HorizontalAlignment="Center" Text="Load" />
+                </StackPanel>
+            </Button>
+            <Button Classes="menuicon" Command="{Binding RequestAddTodoCommand}" ToolTip.Tip="Add New Todo">
+                <StackPanel Spacing="4">
+                    <ui:FAPathIcon Data="{x:Static res:AppIcons.Plus}" Foreground="#1a8754" />
+                    <TextBlock HorizontalAlignment="Center" Text="Add" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ItemsControl x:Name="items" ItemsSource="{Binding Todos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel
-                            x:Name="todoRoot"
-                            Margin="8"
-                            Background="Transparent">
+                        <DockPanel x:Name="todoRoot" Margin="8" Background="Transparent">
                             <Grid x:Name="titleGrid" Background="Teal" DockPanel.Dock="Top">
                                 <TextBlock Classes="title" Text="{Binding Activity}" />
 
-                                <Button
-                                    HorizontalAlignment="Right"
-                                    Classes="trash"
+                                <Button HorizontalAlignment="Right" Classes="trash"
                                     Command="{Binding #items.((vm:MainWindowViewModel)DataContext).DeleteTodoCommand}"
-                                    CommandParameter="{Binding}"
-                                    IsVisible="{Binding #titleGrid.IsPointerOver}"
+                                    CommandParameter="{Binding}" IsVisible="{Binding #titleGrid.IsPointerOver}"
                                     ToolTip.Tip="Delete Todo">
                                     <PathIcon Data="{x:Static res:AppIcons.Trash}" />
                                 </Button>
@@ -44,7 +55,7 @@
                                     <TextBlock Classes="property" Text="Priority" />
                                     <ComboBox ItemsSource="{Binding #items.((vm:MainWindowViewModel)DataContext).Priorities}" SelectedItem="{Binding Priority}">
                                         <ComboBox.ItemTemplate>
-                                            <DataTemplate x:DataType="vm:TodoPriority">
+                                            <DataTemplate x:DataType="m:TodoPriority">
                                                 <TextBlock Text="{Binding}" />
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
@@ -62,11 +73,7 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <Button
-            Grid.Column="2"
-            Margin="8"
-            VerticalAlignment="Top"
-            Classes="add"
+        <!--<Button Grid.Column="2" Margin="8" VerticalAlignment="Top" Classes="add"
             Command="{Binding RequestAddTodoCommand}">
             <ui:FAPathIcon Data="{x:Static res:AppIcons.Plus}">
                 <ui:FAPathIcon.Transitions>
@@ -75,6 +82,6 @@
                     </Transitions>
                 </ui:FAPathIcon.Transitions>
             </ui:FAPathIcon>
-        </Button>
+        </Button>-->
     </Grid>
 </Window>

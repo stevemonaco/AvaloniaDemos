@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Dialogs.Abstractions;
+using Dialogs.Models;
 using System.Threading.Tasks;
 
 namespace Dialogs.ViewModels;

@@ -26,6 +26,8 @@ public partial class App : Application
 
             var services = new ServiceCollection();
             services.AddSingleton<IInteractionService, InteractionService>();
+            services.AddSingleton<ITodoService, TodoService>();
+            services.AddSingleton<IFileRequestService, FileRequestService>();
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<PresentationFactory>();

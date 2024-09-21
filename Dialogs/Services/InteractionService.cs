@@ -69,6 +69,7 @@ internal class InteractionService : IInteractionService
     public async Task<TResult?> RequestAsync<TResult>(IRequestMediator<TResult> mediator)
     {
         await Task.Yield(); // Yield ensures any ContextMenus are closed so focus isn't stolen
+
         var content = _presentationFactory.ResolveView(mediator);
         content.DataContext = mediator;
 

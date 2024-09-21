@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Dialogs.Models;
 
 namespace Dialogs.ViewModels;
-
-public enum TodoPriority { Low, Medium, High, Urgent }
 
 public partial class TodoViewModel : ObservableObject
 {

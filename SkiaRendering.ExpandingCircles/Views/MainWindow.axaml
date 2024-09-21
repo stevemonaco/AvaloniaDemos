@@ -1,5 +1,4 @@
-<Window
-    x:Class="SkiaRendering.ExpandingCircles.Views.MainWindow"
+<Window x:Class="SkiaRendering.ExpandingCircles.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:canvas="using:SkiaRendering.InfiniteCanvas"
@@ -23,30 +22,14 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="auto,*,auto">
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal"
-            Spacing="4">
-            <CheckBox
-                x:Name="pauseBox"
-                Content="Pause"
-                IsChecked="True"
-                IsCheckedChanged="PauseBox_OnIsCheckedChanged" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4">
+            <CheckBox x:Name="pauseBox" Content="Pause" IsChecked="True" IsCheckedChanged="PauseBox_OnIsCheckedChanged" />
             <CheckBox Content="Allow Pan" IsChecked="{Binding #infiniteCanvas.AllowPan}" />
             <CheckBox Content="Allow Zoom" IsChecked="{Binding #infiniteCanvas.AllowZoom}" />
             <CheckBox Content="Constrain World" IsChecked="{Binding #infiniteCanvas.EnableConstraints}" />
         </StackPanel>
-        <canvas:InfiniteCanvas
-            x:Name="infiniteCanvas"
-            Grid.Row="1"
-            EnableConstraints="True"
-            MaxOffsetX="500"
-            MaxOffsetY="500"
-            MaxZoom="8"
-            MinOffsetX="-500"
-            MinOffsetY="-500"
-            MinZoom="0.125"
-            ShowFrameTimings="True" />
+        <canvas:InfiniteCanvas x:Name="infiniteCanvas" Grid.Row="1" EnableConstraints="True" MaxOffsetX="500" MaxOffsetY="500"
+            MaxZoom="8" MinOffsetX="-500" MinOffsetY="-500" MinZoom="0.125" ShowFrameTimings="True" />
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <TextBlock x:Name="canvasOriginText" Width="200" />
             <TextBlock x:Name="mousePositionText" Width="200" />

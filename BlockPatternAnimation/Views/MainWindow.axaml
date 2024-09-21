@@ -1,5 +1,4 @@
-<Window
-    x:Class="BlockPatternAnimation.Views.MainWindow"
+<Window x:Class="BlockPatternAnimation.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:aa="using:Avalonia.Animation"
@@ -26,18 +25,10 @@
         <!--  Default easing method in CSS: ease -> cubic-bezier(0.25, 0.1, 0.25, 1.0)  -->
         <aa:KeySpline x:Key="spline">0.25, 0.1, 0.25, 1.0</aa:KeySpline>
 
-        <VisualBrush
-            x:Key="bgB"
-            DestinationRect="0,0,100,100"
-            SourceRect="0,0,100,100"
-            Stretch="None"
-            TileMode="Tile">
+        <VisualBrush x:Key="bgB" DestinationRect="0,0,100,100" SourceRect="0,0,100,100" Stretch="None" TileMode="Tile">
             <VisualBrush.Visual>
                 <Canvas Width="{StaticResource smallPatternSize}" Height="{StaticResource smallPatternSize}">
-                    <Rectangle
-                        Width="{StaticResource largeSquareSize}"
-                        Height="{StaticResource largeSquareSize}"
-                        Fill="{StaticResource c2}" />
+                    <Rectangle Width="{StaticResource largeSquareSize}" Height="{StaticResource largeSquareSize}" Fill="{StaticResource c2}" />
                 </Canvas>
             </VisualBrush.Visual>
             <VisualBrush.Transform>
@@ -45,24 +36,12 @@
             </VisualBrush.Transform>
         </VisualBrush>
 
-        <VisualBrush
-            x:Key="fgA"
-            DestinationRect="0,0,200,200"
-            SourceRect="0,0,200,200"
-            Stretch="None"
-            TileMode="Tile">
+        <VisualBrush x:Key="fgA" DestinationRect="0,0,200,200" SourceRect="0,0,200,200" Stretch="None" TileMode="Tile">
             <VisualBrush.Visual>
                 <Canvas Width="{StaticResource largePatternSize}" Height="{StaticResource largePatternSize}">
-                    <Rectangle
-                        Width="{StaticResource largeSquareSize}"
-                        Height="{StaticResource largeSquareSize}"
-                        Fill="{StaticResource c1}" />
-                    <Rectangle
-                        Canvas.Left="20"
-                        Canvas.Top="20"
-                        Width="{StaticResource smallSquareSize}"
-                        Height="{StaticResource smallSquareSize}"
-                        Fill="{StaticResource c2}" />
+                    <Rectangle Width="{StaticResource largeSquareSize}" Height="{StaticResource largeSquareSize}" Fill="{StaticResource c1}" />
+                    <Rectangle Canvas.Left="20" Canvas.Top="20" Width="{StaticResource smallSquareSize}"
+                        Height="{StaticResource smallSquareSize}" Fill="{StaticResource c2}" />
                 </Canvas>
             </VisualBrush.Visual>
             <VisualBrush.Transform>
@@ -70,24 +49,11 @@
             </VisualBrush.Transform>
         </VisualBrush>
 
-        <VisualBrush
-            x:Key="fgB"
-            DestinationRect="0,0,200,200"
-            SourceRect="0,0,200,200"
-            Stretch="None"
-            TileMode="Tile">
+        <VisualBrush x:Key="fgB" DestinationRect="0,0,200,200" SourceRect="0,0,200,200" Stretch="None" TileMode="Tile">
             <VisualBrush.Visual>
                 <Canvas Width="200" Height="200">
-                    <Rectangle
-                        Width="80"
-                        Height="80"
-                        Fill="{StaticResource c1}" />
-                    <Rectangle
-                        Canvas.Left="20"
-                        Canvas.Top="20"
-                        Width="40"
-                        Height="40"
-                        Fill="{StaticResource c2}" />
+                    <Rectangle Width="80" Height="80" Fill="{StaticResource c1}" />
+                    <Rectangle Canvas.Left="20" Canvas.Top="20" Width="40" Height="40" Fill="{StaticResource c2}" />
                 </Canvas>
             </VisualBrush.Visual>
             <VisualBrush.Transform>
@@ -156,37 +122,15 @@
     <Grid Margin="-200">
         <Grid Background="{StaticResource c1}" IsVisible="{Binding IsChecked, ElementName=check_bgA}" />
         <Grid Background="{StaticResource bgB}" IsVisible="{Binding IsChecked, ElementName=check_bgB}" />
-        <Grid
-            Background="{StaticResource fgA}"
-            Classes="northeast"
-            IsVisible="{Binding IsChecked, ElementName=check_fgA}" />
-        <Grid
-            Background="{StaticResource fgB}"
-            Classes="southwest"
-            IsVisible="{Binding IsChecked, ElementName=check_fgB}" />
+        <Grid Background="{StaticResource fgA}" Classes="northeast" IsVisible="{Binding IsChecked, ElementName=check_fgA}" />
+        <Grid Background="{StaticResource fgB}" Classes="southwest" IsVisible="{Binding IsChecked, ElementName=check_fgB}" />
 
-        <StackPanel
-            Width="280"
-            VerticalAlignment="Top"
-            Background="{StaticResource c1}"
-            Orientation="Horizontal"
+        <StackPanel Width="280" VerticalAlignment="Top" Background="{StaticResource c1}" Orientation="Horizontal"
             Spacing="8">
-            <CheckBox
-                x:Name="check_bgA"
-                Content="bgA"
-                IsChecked="True" />
-            <CheckBox
-                x:Name="check_bgB"
-                Content="bgB"
-                IsChecked="True" />
-            <CheckBox
-                x:Name="check_fgA"
-                Content="fgA"
-                IsChecked="True" />
-            <CheckBox
-                x:Name="check_fgB"
-                Content="fgB"
-                IsChecked="True" />
+            <CheckBox x:Name="check_bgA" Content="bgA" IsChecked="True" />
+            <CheckBox x:Name="check_bgB" Content="bgB" IsChecked="True" />
+            <CheckBox x:Name="check_fgA" Content="fgA" IsChecked="True" />
+            <CheckBox x:Name="check_fgB" Content="fgB" IsChecked="True" />
         </StackPanel>
     </Grid>
 </Window>

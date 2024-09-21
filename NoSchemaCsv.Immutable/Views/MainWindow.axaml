@@ -1,5 +1,4 @@
-<Window
-    x:Class="NoSchemaCsv.Immutable.Views.MainWindow"
+<Window x:Class="NoSchemaCsv.Immutable.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,9 +11,9 @@
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
     <Grid RowDefinitions="auto,*">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Command="{Binding LoadRandomizedCsvCommand}" Content="Load Randomized CSV" />
-            <TextBlock Margin="12,0,0,0" Text="Generated Rows: " VerticalAlignment="Center" />
+            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Generated Rows: " />
             <NumericUpDown Value="{Binding RowsToGenerate}" />
         </StackPanel>
         <TreeDataGrid x:Name="tree" Grid.Row="1" />

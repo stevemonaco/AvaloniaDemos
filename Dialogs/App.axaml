@@ -1,5 +1,4 @@
-<Application
-    x:Class="Dialogs.App"
+<Application x:Class="Dialogs.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fas="using:FluentAvalonia.Styling"

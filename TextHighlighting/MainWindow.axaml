@@ -1,5 +1,4 @@
-<Window
-    x:Class="TextHighlighting.MainWindow"
+<Window x:Class="TextHighlighting.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="using:TextHighlighting.Controls"
@@ -16,12 +15,8 @@
             <CheckBox x:Name="useRegex" Content="Use Regex" />
         </StackPanel>
         <ScrollViewer Grid.Row="1">
-            <c:TextHighlightBlock
-                Highlight="Orange"
-                Pattern="{Binding #patternBox.Text}"
-                SelectionBrush="#B05B6EE1"
-                TextWrapping="WrapWithOverflow"
-                UseRegex="{Binding #useRegex.IsChecked}">
+            <c:TextHighlightBlock Highlight="Orange" Pattern="{Binding #patternBox.Text}" SelectionBrush="#B05B6EE1"
+                TextWrapping="WrapWithOverflow" UseRegex="{Binding #useRegex.IsChecked}">
                 Lorem ipsum odor amet, consectetuer adipiscing elit. Bibendum ullamcorper morbi; pretium lectus natoque vestibulum. Suscipit phasellus venenatis consequat, porttitor erat tristique molestie. Est nullam convallis; penatibus conubia tortor sem himenaeos ut. Varius aenean aliquet suspendisse tincidunt montes condimentum; lectus vehicula nascetur. Imperdiet nulla consectetur pretium etiam, imperdiet pulvinar phasellus. Sit mattis arcu vehicula hac felis ad. Dictum erat augue; magnis nostra vitae venenatis senectus velit. Diam donec per augue dapibus, rutrum eros maecenas.
                 Ante sollicitudin primis lectus eget pretium auctor sem. Nascetur massa ultricies lacinia dis justo augue aptent libero nibh. Urna viverra cubilia ipsum quam sit torquent conubia. Rhoncus lectus ipsum montes accumsan proin morbi ad massa eget. Vitae egestas aptent convallis elementum turpis suspendisse ad nostra mauris. Euismod blandit a dis fermentum vitae fermentum. Non morbi bibendum volutpat malesuada condimentum lectus. Sem placerat ullamcorper faucibus semper a faucibus neque integer. Tempus vitae natoque vitae nam vel. Sociosqu metus tristique ligula et torquent.
                 Venenatis ad laoreet hac mus; nec nullam. Morbi arcu tristique convallis justo augue nisi dapibus accumsan? Nec leo rutrum egestas; neque nec aptent quam hendrerit. Odio tellus netus condimentum odio varius inceptos. Nibh taciti aliquam nullam molestie egestas mauris sagittis. Volutpat elit porttitor augue posuere vehicula nibh. Metus venenatis nascetur tortor imperdiet lacus, bibendum sit hac sagittis. Felis aliquam arcu rutrum nisi, nisl aliquet.

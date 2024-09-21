@@ -1,5 +1,4 @@
-<Window
-    x:Class="RealTimeBitmapAdapter.Views.MainWindow"
+<Window x:Class="RealTimeBitmapAdapter.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,19 +16,9 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="auto,*">
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal"
-            Spacing="8"
-            ZIndex="1">
-            <CheckBox
-                Content="Parallelized Copy"
-                IsChecked="{Binding UseParallelStrategy}"
-                ToolTip.Tip="Uses Parallel.For to perform the copy from an unscaled [0, 1] image onto the WriteableBitmap" />
-            <CheckBox
-                Content="Overlay"
-                IsChecked="{Binding ShouldShowOverlay}"
-                ToolTip.Tip="Show Text Overlay drawn to a WriteableBitmap with SkiaSharp" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8" ZIndex="1">
+            <CheckBox Content="Parallelized Copy" IsChecked="{Binding UseParallelStrategy}" ToolTip.Tip="Uses Parallel.For to perform the copy from an unscaled [0, 1] image onto the WriteableBitmap" />
+            <CheckBox Content="Overlay" IsChecked="{Binding ShouldShowOverlay}" ToolTip.Tip="Show Text Overlay drawn to a WriteableBitmap with SkiaSharp" />
 
             <TextBlock VerticalAlignment="Center" Text="Width" />
             <TextBox MinWidth="80" Text="{Binding ImageWidth}" />
@@ -40,13 +29,8 @@
             <TextBlock VerticalAlignment="Center" Text="{Binding FramesPerSecond, StringFormat=FPS: {0}}" />
         </StackPanel>
 
-        <Image
-            x:Name="_image"
-            Grid.Row="1"
-            Width="{Binding ActualWidth}"
-            Height="{Binding ActualHeight}"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
+        <Image x:Name="_image" Grid.Row="1" Width="{Binding ActualWidth}" Height="{Binding ActualHeight}"
+            HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 
 </Window>

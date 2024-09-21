@@ -2,6 +2,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:FluentAvalonia.UI.Controls">
 
+    <!--  Replaces the default RadioButton with ellipse / text with a ToggleButton style  -->
+    <!--  This is necessary because a ToggleButton itself can be unchecked, so it can't be used directly as a RadioButton style  -->
+    <Style Selector="RadioButton.compact">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ToggleButton}}" />
+    </Style>
+
     <Style Selector="Button.trash">
         <Style Selector="^ /template/ ui|FABorder#Root">
             <Setter Property="Background" Value="#00DA3633" />

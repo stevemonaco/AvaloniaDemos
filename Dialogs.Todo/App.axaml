@@ -8,6 +8,5 @@
         <fas:FluentAvaloniaTheme PreferUserAccentColor="True" />
 
         <StyleInclude Source="avares://Dialogs.Todo/Styles/AppStyles.axaml" />
-        <StyleInclude Source="avares://Dialogs.Todo/Styles/RadioButtonCompact.axaml" />
     </Application.Styles>
 </Application>

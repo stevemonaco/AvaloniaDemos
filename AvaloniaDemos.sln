@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextOutlineAnimation", "Tex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeBitmapAdapter", "RealTimeBitmapAdapter\RealTimeBitmapAdapter.csproj", "{D1C7CCF9-CAE7-4E96-9B5A-7644324DF994}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dialogs", "Dialogs\Dialogs.csproj", "{89A57F30-E835-4EEC-975B-94B1E95F2A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dialogs.Todo", "Dialogs.Todo\Dialogs.Todo.csproj", "{89A57F30-E835-4EEC-975B-94B1E95F2A58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dialogs.Abstractions", "Dialogs.Abstractions\Dialogs.Abstractions.csproj", "{1B5F0387-5266-4C5B-8B35-984533876B85}"
 EndProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoSchemaCsv.Immutable", "No
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debugging", "Debugging\Debugging.csproj", "{C9505BD9-70DA-4905-B5CC-A6471928CA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextHighlighting", "TextHighlighting\TextHighlighting.csproj", "{B93F9F04-5F52-45A9-AE01-7135D8287979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextHighlighting", "TextHighlighting\TextHighlighting.csproj", "{B93F9F04-5F52-45A9-AE01-7135D8287979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@
     <Application.Styles>
         <fas:FluentAvaloniaTheme PreferUserAccentColor="True" />
 
-        <StyleInclude Source="avares://Dialogs/Styles/AppStyles.axaml" />
-        <StyleInclude Source="avares://Dialogs/Styles/RadioButtonCompact.axaml" />
+        <StyleInclude Source="avares://Dialogs.Todo/Styles/AppStyles.axaml" />
+        <StyleInclude Source="avares://Dialogs.Todo/Styles/RadioButtonCompact.axaml" />
     </Application.Styles>
 </Application>

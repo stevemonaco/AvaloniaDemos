@@ -7,7 +7,6 @@ using Dialogs.Abstractions;
 using Dialogs.Services;
 using Dialogs.ViewModels;
 using Dialogs.Views;
-using Jot;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Dialogs;
@@ -31,7 +30,6 @@ public partial class App : Application
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<PresentationFactory>();
-            services.AddSingleton<Tracker>();
 
             services.AddTransient<TodoEditorViewModel>();
 

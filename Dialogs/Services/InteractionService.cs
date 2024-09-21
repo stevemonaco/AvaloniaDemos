@@ -4,14 +4,13 @@ using Dialogs.Abstractions;
 using FluentAvalonia.UI.Controls;
 using System;
 using System.Threading.Tasks;
-using Jot;
 
 namespace Dialogs.Services;
 internal class InteractionService : IInteractionService
 {
     private readonly PresentationFactory _presentationFactory;
 
-    public InteractionService(PresentationFactory presentationFactory, Tracker tracker)
+    public InteractionService(PresentationFactory presentationFactory)
     {
         _presentationFactory = presentationFactory;
     }

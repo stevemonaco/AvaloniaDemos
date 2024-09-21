@@ -39,6 +39,7 @@
         <Style Selector="^ ui|FAPathIcon">
             <Setter Property="RenderTransform" Value="scale(0.8)" />
         </Style>
+
         <Style Selector="^:pointerover ui|FAPathIcon">
             <Setter Property="RenderTransform" Value="scale(1)" />
         </Style>

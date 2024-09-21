@@ -11,23 +11,18 @@ public interface ITodoService
 
 public class TodoService : ITodoService
 {
+    private JsonSerializerOptions _options = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
     public IEnumerable<TodoModel>? DeserializeTodos(string jsonContent)
     {
-        var jsonOptions = new JsonSerializerOptions()
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        return JsonSerializer.Deserialize<IEnumerable<TodoModel>>(jsonContent, jsonOptions);
+        return JsonSerializer.Deserialize<IEnumerable<TodoModel>>(jsonContent, _options);
     }
 
     public string SerializeTodos(IEnumerable<TodoModel> items)
     {
-        var jsonOptions = new JsonSerializerOptions()
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        return JsonSerializer.Serialize(items, jsonOptions);
+        return JsonSerializer.Serialize(items, _options);
     }
 }

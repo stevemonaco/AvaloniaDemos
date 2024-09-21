@@ -13,7 +13,9 @@
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
-    <Grid Margin="0,0,32,0" ColumnDefinitions="25*,50*,25*" Focusable="True" RowDefinitions="auto, *">
+    <Grid ColumnDefinitions="25*,50*,25*" RowDefinitions="auto, *">
+
+        <!--  Top Menu Buttons  -->
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
             <Button Classes="menuicon" Command="{Binding RequestSaveTodosCommand}" ToolTip.Tip="Save Todos">
                 <StackPanel Spacing="4">
@@ -34,22 +36,26 @@
                 </StackPanel>
             </Button>
         </StackPanel>
+
+        <!--  Todo List  -->
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ItemsControl x:Name="items" ItemsSource="{Binding Todos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel x:Name="todoRoot" Margin="8" Background="Transparent">
-                            <Grid x:Name="titleGrid" Background="Teal" DockPanel.Dock="Top">
+                            <!--  Todo Title  -->
+                            <Panel x:Name="titlePanel" Background="Teal" DockPanel.Dock="Top">
                                 <TextBlock Classes="title" Text="{Binding Activity}" />
 
                                 <Button HorizontalAlignment="Right" Classes="trash"
                                     Command="{Binding #items.((vm:MainWindowViewModel)DataContext).DeleteTodoCommand}"
-                                    CommandParameter="{Binding}" IsVisible="{Binding #titleGrid.IsPointerOver}"
+                                    CommandParameter="{Binding}" IsVisible="{Binding #titlePanel.IsPointerOver}"
                                     ToolTip.Tip="Delete Todo">
                                     <PathIcon Data="{x:Static res:AppIcons.Trash}" />
                                 </Button>
-                            </Grid>
+                            </Panel>
 
+                            <!--  Todo Settings  -->
                             <StackPanel Background="Black">
                                 <StackPanel Margin="8" Orientation="Horizontal">
                                     <TextBlock Classes="property" Text="Priority" />
@@ -72,16 +78,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
-        <!--<Button Grid.Column="2" Margin="8" VerticalAlignment="Top" Classes="add"
-            Command="{Binding RequestAddTodoCommand}">
-            <ui:FAPathIcon Data="{x:Static res:AppIcons.Plus}">
-                <ui:FAPathIcon.Transitions>
-                    <Transitions>
-                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
-                    </Transitions>
-                </ui:FAPathIcon.Transitions>
-            </ui:FAPathIcon>
-        </Button>-->
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Orientation="Horizontal" Spacing="8">
@@ -12,6 +13,10 @@
 
     <!--  Replaces the default RadioButton with ellipse / text with a ToggleButton style  -->
     <!--  This is necessary because ToggleButton itself can be unchecked, so it can't be used directly as a RadioButton style  -->
+    <!--<Style Selector="RadioButton.compact">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ToggleButton}}" />
+    </Style>-->
+
     <Style Selector="RadioButton.compact">
         <Setter Property="Background" Value="{DynamicResource ToggleButtonBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForeground}" />

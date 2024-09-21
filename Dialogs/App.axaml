@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fas="using:FluentAvalonia.Styling"
     xmlns:local="using:Dialogs"
-    RequestedThemeVariant="Default">
+    RequestedThemeVariant="Dark">
     <Application.Styles>
         <fas:FluentAvaloniaTheme PreferUserAccentColor="True" />
 

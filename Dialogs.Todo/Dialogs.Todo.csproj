@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Remove="Assets\todoadditem.gif" />
+    <AvaloniaResource Remove="Assets\todoeditsaveload.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +28,8 @@
 
   <ItemGroup>
     <Folder Include="_data\" />
+    <None Update="_data\default.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

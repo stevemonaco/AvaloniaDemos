@@ -24,6 +24,8 @@ public class FileRequestService : IFileRequestService
         if (GetStorageProvider() is not { } storageProvider)
             return null;
 
+        var folder = await storageProvider.TryGetFolderFromPathAsync("_data");
+
         var options = new FilePickerOpenOptions()
         {
             FileTypeFilter = new List<FilePickerFileType>()
@@ -35,6 +37,7 @@ public class FileRequestService : IFileRequestService
                     MimeTypes = ["application/json"]
                 }
             },
+            SuggestedStartLocation = folder,
             Title = "Load Todo JSON File"
         };
 

@@ -1,4 +1,4 @@
-Basic Todo app that demonstrates several types of MVVM-friendly dialogs. It implements the interfaces from [Dialogs.Abstractions](https://github.com/stevemonaco/AvaloniaDemos/Dialogs.Abstractions) using [FluentAvalonia](https://github.com/amwx/FluentAvalonia) for hosting dialogs in-app.
+Basic Todo app that demonstrates several types of MVVM-friendly dialogs. It implements the interfaces from [Dialogs.Abstractions](/Dialogs.Abstractions) using [FluentAvalonia](https://github.com/amwx/FluentAvalonia) for hosting dialogs in-app.
 
 ## Add Todo Item
 

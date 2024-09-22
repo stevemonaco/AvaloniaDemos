@@ -1,8 +1,9 @@
 ﻿using Avalonia.Media;
 using Avalonia;
+using TextHighlighting.Abstractions;
 
 namespace TextHighlighting.Controls;
-public partial class TextHighlightBlock
+public partial class TextHighlightBlock : IHighlighter
 {
     public static readonly StyledProperty<string?> PatternProperty =
         AvaloniaProperty.Register<TextHighlightBlock, string?>(nameof(Pattern));

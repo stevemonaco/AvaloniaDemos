@@ -19,4 +19,4 @@ Ideas on the approach came from a [discussion](https://github.com/AvaloniaUI/Ava
 3. `TextPresenter.InvalidateTextLayout` is used to force an update when the highlight ranges have changed.
 4. A new `ControlTheme` copied from `TextBox` was made so that `HighlightingTextPresenter` was used.
 
-Ideas from [AppSuiteBase's SyntaxHighlightingTextBox](https://github.com/carina-studio/AppSuiteBase/blob/master/SyntaxHighlighting/Controls/SyntaxHighlightingTextBox.cs) and [Avalonia.SpellChecker](https://github.com/GustavoHennig/Avalonia.SpellChecker).
+Ideas from this [discussion](https://github.com/AvaloniaUI/Avalonia/discussions/17077) which led to [AppSuiteBase's SyntaxHighlightingTextBox](https://github.com/carina-studio/AppSuiteBase/blob/master/SyntaxHighlighting/Controls/SyntaxHighlightingTextBox.cs) and some troubleshooting ideas from [Avalonia.SpellChecker](https://github.com/GustavoHennig/Avalonia.SpellChecker).

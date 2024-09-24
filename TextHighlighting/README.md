@@ -18,3 +18,5 @@ Ideas on the approach came from a [discussion](https://github.com/AvaloniaUI/Ava
 2. `TextPresenter.CreateLayoutText` was overridden to create `textStyleOverrides` for each highlighted phrase and between each highlighted phrase. Most of the implementation is from the original `TextPresenter`.
 3. `TextPresenter.InvalidateTextLayout` is used to force an update when the highlight ranges have changed.
 4. A new `ControlTheme` copied from `TextBox` was made so that `HighlightingTextPresenter` was used.
+
+Ideas from [AppSuiteBase's SyntaxHighlightingTextBox](https://github.com/carina-studio/AppSuiteBase/blob/master/SyntaxHighlighting/Controls/SyntaxHighlightingTextBox.cs) and [Avalonia.SpellChecker](https://github.com/GustavoHennig/Avalonia.SpellChecker).

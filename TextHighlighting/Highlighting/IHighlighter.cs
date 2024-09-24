@@ -1,9 +1,9 @@
 ﻿using Avalonia.Media;
 
-namespace TextHighlighting.Abstractions;
+namespace TextHighlighting.Controls;
 public interface IHighlighter
 {
     string? Pattern { get; set; }
     bool UseRegex { get; set; }
-    IBrush? Highlight { get; set; }
+    IBrush? BackgroundHighlight { get; set; }
 }

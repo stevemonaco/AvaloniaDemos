@@ -2,7 +2,7 @@
 using Avalonia;
 
 namespace TextHighlighting.Controls;
-public partial class TextHighlightBlock : IHighlighter
+public partial class TextHighlightBox : IHighlighter
 {
     public static readonly StyledProperty<string?> PatternProperty =
         AvaloniaProperty.Register<TextHighlightBlock, string?>(nameof(Pattern));

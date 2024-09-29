@@ -22,5 +22,6 @@
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Bogus" />
     <PackageReference Include="CsvHelper" />
+    <PackageReference Include="SkiaSharp" />
   </ItemGroup>
 </Project>

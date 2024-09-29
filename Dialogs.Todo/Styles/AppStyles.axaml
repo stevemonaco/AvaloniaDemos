@@ -9,14 +9,14 @@
     </Style>
 
     <Style Selector="Button.trash">
-        <Style Selector="^ /template/ ui|FABorder#Root">
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="#00DA3633" />
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
-        <Style Selector="^:pointerover /template/ ui|FABorder#Root">
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="#FFDA3633" />
         </Style>
-        <Style Selector="^:pressed /template/ ui|FABorder#Root">
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="#FF9F0409" />
         </Style>
     </Style>

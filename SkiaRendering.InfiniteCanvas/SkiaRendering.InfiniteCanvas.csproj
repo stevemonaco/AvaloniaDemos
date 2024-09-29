@@ -7,5 +7,6 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="SkiaSharp" />
   </ItemGroup>
 </Project>

@@ -17,10 +17,10 @@
     <Window.Resources>
         <am:Color x:Key="c1">#C3CCAF</am:Color>
         <am:Color x:Key="c2">#67434F</am:Color>
-        <sys:Double x:Key="smallPatternSize">100</sys:Double>
-        <sys:Double x:Key="largePatternSize">200</sys:Double>
-        <sys:Double x:Key="smallSquareSize">40</sys:Double>
-        <sys:Double x:Key="largeSquareSize">80</sys:Double>
+        <x:Double x:Key="smallPatternSize">100</x:Double>
+        <x:Double x:Key="largePatternSize">200</x:Double>
+        <x:Double x:Key="smallSquareSize">40</x:Double>
+        <x:Double x:Key="largeSquareSize">80</x:Double>
 
         <!--  Default easing method in CSS: ease -> cubic-bezier(0.25, 0.1, 0.25, 1.0)  -->
         <aa:KeySpline x:Key="spline">0.25, 0.1, 0.25, 1.0</aa:KeySpline>

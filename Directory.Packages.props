@@ -14,10 +14,10 @@
     <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.0" />
     <PackageVersion Include="Avalonia.Xaml.Behaviors" Version="11.1.0" />
     <PackageVersion Include="Avalonia.Controls.TreeDataGrid" Version="11.0.10" />
-    <PackageVersion Include="SkiaSharp" Version="3.0.0-preview.4.1" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="8.0.2" />
+    <PackageVersion Include="SkiaSharp" Version="3.118.0-preview.1.2" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="9.0.0" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageVersion Include="ReactiveProperty" Version="9.6.0" />
     <PackageVersion Include="FluentAvaloniaUI" Version="2.1.0" />

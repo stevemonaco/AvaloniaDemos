@@ -82,11 +82,11 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
 
         if (e.Direction == SwipeDirection.Left)
         {
-            NavigateToNext();
+            NavigateToNext(e.Delta!.Value.X);
         }
         else if (e.Direction == SwipeDirection.Right)
         {
-            NavigateToPrevious();
+            NavigateToPrevious(e.Delta!.Value.X);
         }
         else if (e.Direction == SwipeDirection.None && e.Delta.HasValue)
         {
@@ -120,7 +120,7 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
         }
     }
 
-    private void NavigateToPrevious()
+    private void NavigateToPrevious(double? swipeDisplacement = null)
     {
         if (_activeIndex is null || !CanSwipe)
             return;
@@ -129,10 +129,10 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
         TransitioningPage = ActivePage;
         ActivePage = Children[_activeIndex.Value];
 
-        AnimateTransitionToPage(ActivePage, TransitioningPage!, true);
+        AnimateTransitionToPage(ActivePage, TransitioningPage!, true, swipeDisplacement);
     }
 
-    private void NavigateToNext()
+    private void NavigateToNext(double? swipeDisplacement = null)
     {
         if (_activeIndex is null || !CanSwipe)
             return;
@@ -141,10 +141,10 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
         TransitioningPage = ActivePage;
         ActivePage = Children[_activeIndex.Value];
 
-        AnimateTransitionToPage(ActivePage, TransitioningPage!, false);
+        AnimateTransitionToPage(ActivePage, TransitioningPage!, false, swipeDisplacement);
     }
 
-    private void AnimateTransitionToPage(Control to, Control from, bool shouldSlideRight)
+    private void AnimateTransitionToPage(Control to, Control from, bool shouldSlideRight, double? swipeDisplacement = null)
     {
         var toVisual = ElementComposition.GetElementVisual(to);
         var fromVisual = ElementComposition.GetElementVisual(from);
@@ -153,7 +153,7 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
             return;
 
         var slideTo = shouldSlideRight ? Slide(toVisual, (float)-Bounds.Width, 0) : Slide(toVisual, (float)Bounds.Width, 0);
-        var slideFrom = shouldSlideRight ? Slide(fromVisual, null, (float)Bounds.Width) : Slide(fromVisual, null, (float)-Bounds.Width);
+        var slideFrom = shouldSlideRight ? Slide(fromVisual, (float?)swipeDisplacement, (float)Bounds.Width) : Slide(fromVisual, (float?)swipeDisplacement, (float)-Bounds.Width);
 
         toVisual.StartAnimation("Offset", slideTo);
         fromVisual.StartAnimation("Offset", slideFrom);

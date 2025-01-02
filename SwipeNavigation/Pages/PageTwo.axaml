@@ -49,15 +49,6 @@
     </UserControl.Styles>
 
     <StackPanel Width="450" Orientation="Vertical">
-
-        <!--  Button  -->
-        <Border Classes="header-border">
-            <StackPanel Orientation="Vertical" Spacing="4">
-                <TextBlock Classes="header" Text="Button" />
-                <TextBlock TextWrapping="Wrap">A standard button control</TextBlock>
-            </StackPanel>
-        </Border>
-
         <Border Padding="15" Classes="thin">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
                 <StackPanel Width="200" Orientation="Vertical" Spacing="8">

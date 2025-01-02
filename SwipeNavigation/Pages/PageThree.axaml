@@ -12,7 +12,6 @@
     <!--  Taken from ControlCatalog just to have something to show  -->
 
     <StackPanel>
-        <TextBlock Classes="h2">A control that can display text</TextBlock>
         <WrapPanel MaxWidth="680" Margin="-10,0" HorizontalAlignment="Center">
             <WrapPanel.Styles>
                 <Style Selector="Border">

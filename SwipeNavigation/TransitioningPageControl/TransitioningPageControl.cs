@@ -108,11 +108,11 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
     {
         if (e.Key == Key.Left)
         {
-            NavigateToNext();
+            NavigateToPrevious();
         }
         else if (e.Key == Key.Right)
         {
-            NavigateToPrevious();
+            NavigateToNext();
         }
         else
         {

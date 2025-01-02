@@ -8,7 +8,8 @@ public partial class TransitioningPageControl
 {
     /// <summary>
     /// Gets the children which are used to transition across during page swipes.
-    /// These controls are fully realized and cached
+    /// These controls are fully realized and cached, although only a maximum of two will be 
+    /// in the visual and logical trees at once
     /// </summary>
     [Content]
     public Avalonia.Controls.Controls Children { get; } = [];

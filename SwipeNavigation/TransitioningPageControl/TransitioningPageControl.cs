@@ -61,13 +61,8 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
         {
             var pageVisual = ElementComposition.GetElementVisual(ActivePage);
 
-            var _resetAnimation = pageVisual!.Compositor!.CreateVector3KeyFrameAnimation();
-            _resetAnimation.Target = "Offset";
-            //_resetAnimation.InsertKeyFrame(0f, ToVector3(pageVisual.Offset), new LinearEasing());
-            _resetAnimation.InsertKeyFrame(1f, new Vector3((float)e.Delta.Value.X, 0, 0), new LinearEasing());
-            _resetAnimation.Duration = TimeSpan.FromSeconds(0.1);
-
-            pageVisual.StartAnimation("Offset", _resetAnimation);
+            if (pageVisual is not null)
+                pageVisual.Offset = new Vector3((float)e.Delta.Value.X, 0, 0);
         }
 
         SetSwipePseudoClasses(e.ExpectedDirection);

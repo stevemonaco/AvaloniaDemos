@@ -3,5 +3,6 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<LangVersion>13</LangVersion>
 		<Nullable>enable</Nullable>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 	</PropertyGroup>
 </Project>

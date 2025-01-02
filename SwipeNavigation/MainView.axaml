@@ -1,0 +1,24 @@
+<UserControl x:Class="SwipeNavigation.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="using:SwipeNavigation.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:g="using:SwipeNavigation.Gestures"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="using:SwipeNavigation.Views"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Panel>
+        <c:TransitioningPageControl>
+            <!--  Example of how to attach via XAML. Already attached by TransitioningPageControl itself though  -->
+            <!--<c:TransitioningPageControl.GestureRecognizers>
+                <g:SwipeGestureRecognizer SwipeThreshold="50" CanSwipeLeft="True" CanSwipeRight="True" />
+            </c:TransitioningPageControl.GestureRecognizers>-->
+
+            <v:PageOne />
+            <v:PageTwo />
+            <v:PageThree />
+        </c:TransitioningPageControl>
+    </Panel>
+</UserControl>

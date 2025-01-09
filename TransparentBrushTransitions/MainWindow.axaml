@@ -1,0 +1,97 @@
+<Window x:Class="TransparentBrushTransitions.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:TransparentBrushTransitions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TransparentBrushTransitions"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="Rectangle">
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Margin" Value="4" />
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Fill" Value="Blue" />
+            </Style>
+            <Style Selector="^.builtin">
+                <Setter Property="Transitions">
+                    <Setter.Value>
+                        <Transitions>
+                            <BrushTransition Property="Fill" Duration="0:0:0:1" />
+                        </Transitions>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style Selector="^.custom">
+                <Setter Property="Transitions">
+                    <Setter.Value>
+                        <Transitions>
+                            <local:TransparentBrushTransition Property="Fill" Duration="0:0:0:1" />
+                        </Transitions>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style Selector="^.transparent-to-blue">
+                <Setter Property="Fill" Value="Transparent" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="Blue" />
+                </Style>
+            </Style>
+            <Style Selector="^.blue-to-transparent">
+                <Setter Property="Fill" Value="Blue" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="Transparent" />
+                </Style>
+            </Style>
+            <Style Selector="^.black-transparent-to-green">
+                <Setter Property="Fill" Value="#00000000" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="Green" />
+                </Style>
+            </Style>
+            <Style Selector="^.green-to-black-transparent">
+                <Setter Property="Fill" Value="Green" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="#00000000" />
+                </Style>
+            </Style>
+            <Style Selector="^.blue-to-red">
+                <Setter Property="Fill" Value="Blue" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="Red" />
+                </Style>
+            </Style>
+            <Style Selector="^.red-to-blue">
+                <Setter Property="Fill" Value="Red" />
+                <Style Selector="^:pointerover">
+                    <Setter Property="Fill" Value="Blue" />
+                </Style>
+            </Style>
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="auto, *, auto, *">
+        <TextBlock Text="Built-in (BrushTransition)" />
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Rectangle Classes="builtin transparent-to-blue" />
+            <Rectangle Classes="builtin blue-to-transparent" />
+            <Rectangle Classes="builtin black-transparent-to-green" />
+            <Rectangle Classes="builtin green-to-black-transparent" />
+            <Rectangle Classes="builtin blue-to-red" />
+            <Rectangle Classes="builtin red-to-blue" />
+        </UniformGrid>
+        <TextBlock Grid.Row="2" Text="Custom (TransparentBrushTransition)" />
+        <UniformGrid Grid.Row="3" Columns="2">
+            <Rectangle Classes="custom transparent-to-blue" />
+            <Rectangle Classes="custom blue-to-transparent" />
+            <Rectangle Classes="custom black-transparent-to-green" />
+            <Rectangle Classes="custom green-to-black-transparent" />
+            <Rectangle Classes="custom blue-to-red" />
+            <Rectangle Classes="custom red-to-blue" />
+        </UniformGrid>
+    </Grid>
+</Window>

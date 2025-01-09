@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextHighlighting", "TextHig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwipeNavigation", "SwipeNavigation\SwipeNavigation.csproj", "{18539E36-6717-4A9C-9683-2D77DD7CEDA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransparentBrushTransitions", "TransparentBrushTransitions\TransparentBrushTransitions.csproj", "{35D23D63-CE8C-4D9B-872A-C2D6B2CEE035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{18539E36-6717-4A9C-9683-2D77DD7CEDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18539E36-6717-4A9C-9683-2D77DD7CEDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18539E36-6717-4A9C-9683-2D77DD7CEDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D23D63-CE8C-4D9B-872A-C2D6B2CEE035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D23D63-CE8C-4D9B-872A-C2D6B2CEE035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D23D63-CE8C-4D9B-872A-C2D6B2CEE035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D23D63-CE8C-4D9B-872A-C2D6B2CEE035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

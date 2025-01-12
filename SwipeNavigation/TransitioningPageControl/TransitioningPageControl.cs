@@ -91,7 +91,8 @@ public partial class TransitioningPageControl : Control, ICustomHitTest
             _resetAnimation.Target = "Offset";
 
             if (e.Delta.HasValue)
-            _resetAnimation.InsertKeyFrame(0f, new Vector3((float)e.Delta.Value.X, 0, 0), _snapBackEasing);
+                _resetAnimation.InsertKeyFrame(0f, new Vector3((float)e.Delta.Value.X, 0, 0), _snapBackEasing);
+
             _resetAnimation.InsertKeyFrame(1f, new Vector3(0, 0, 0), _snapBackEasing);
             _resetAnimation.Duration = TimeSpan.FromSeconds(2);
 

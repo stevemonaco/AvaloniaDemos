@@ -113,6 +113,7 @@ internal class InteractionService : IInteractionService
             ContentDialogResult.None => PromptResult.Cancel,
             ContentDialogResult.Primary => PromptResult.Accept,
             ContentDialogResult.Secondary => PromptResult.Reject,
+            _ => throw new NotSupportedException()
         };
     }
 }

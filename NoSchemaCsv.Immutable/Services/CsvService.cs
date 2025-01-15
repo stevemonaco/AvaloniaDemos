@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -27,14 +28,17 @@ public class CsvService
         reader.ReadHeader();
         var header = reader.HeaderRecord;
 
+        if (header is null)
+            throw new InvalidOperationException($"Header CSV was missing");
+
         while(reader.Read())
         {
             int id = reader.GetField<int>("Id");
-            var items = header.Skip(1).Select(x => reader.GetField(x)).ToArray();
+            var items = header.Skip(1).Select(x => reader.GetField(x)).OfType<string>().ToArray();
             var record = new CsvRecord(id, items);
             records.Add(record);
         }
 
-        return new CsvModel(new(reader.HeaderRecord), records);
+        return new CsvModel(new(header), records);
     }
 }

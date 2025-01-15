@@ -27,6 +27,8 @@ public abstract partial class DialogViewModel<TResult> : ObservableValidator, IR
     /// <summary>
     /// Called when the user cancels an interaction
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("ObservablePropertyGenerator", "MVVMTK0034",
+        Justification = "SetProperty must be used here to ensure PropertyChanged always fires")]
     protected virtual void Cancel()
     {
         SetProperty(ref _requestResult, default, false);

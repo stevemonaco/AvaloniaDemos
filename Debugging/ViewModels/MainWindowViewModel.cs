@@ -53,7 +53,10 @@ public partial class MainWindowViewModel : ViewModelBase
         var typographicName = infos.FirstOrDefault(x => x.Id == "TypographicFamily")?.Name;
 
         // Poor code for building an avares:// scheme without the font file name
-        var fontFolder = Path.GetDirectoryName(FontUri).Replace('\\', '/').Replace("avares:/", "avares://");
+        if (Path.GetDirectoryName(FontUri) is not string initialFolder)
+            return;
+
+        var fontFolder = initialFolder.Replace('\\', '/').Replace("avares:/", "avares://");
 
         string? standardFontName = string.IsNullOrEmpty(typographicName) ? fontName : typographicName;
         string resourceFontName = $"{fontFolder}#{standardFontName}";

@@ -100,7 +100,6 @@ public partial class MainWindow : Window
         using var surface = SKSurface.Create(imageInfo, frameBuffer.Address);
         using var paint = new SKPaint()
         {
-            TextSize = 36.0f,
             IsAntialias = true,
             Color = new SKColor(0x42, 0x81, 0xA4),
             IsStroke = false
@@ -108,18 +107,22 @@ public partial class MainWindow : Window
 
         using var outline = new SKPaint()
         {
-            TextSize = 36.0f,
             IsAntialias = false,
             Color = new SKColor(0x00, 0x00, 0x00),
             StrokeWidth = 1.5f,
             IsStroke = true
         };
 
+        using var font = new SKFont()
+        {
+            Size = 36.0f
+        };
+
         var canvas = surface.Canvas;
-        canvas.DrawText($"FPS: {_viewModel.FramesPerSecond}", 20, 40, paint);
-        canvas.DrawText($"FPS: {_viewModel.FramesPerSecond}", 20, 40, outline);
-        canvas.DrawText($"Size: {_viewModel.ActualWidth}x{_viewModel.ActualHeight}", 20, 70, paint);
-        canvas.DrawText($"Size: {_viewModel.ActualWidth}x{_viewModel.ActualHeight}", 20, 70, outline);
+        canvas.DrawText($"FPS: {_viewModel.FramesPerSecond}", 20, 40, SKTextAlign.Left, font, paint);
+        canvas.DrawText($"FPS: {_viewModel.FramesPerSecond}", 20, 40, SKTextAlign.Left, font, outline);
+        canvas.DrawText($"Size: {_viewModel.ActualWidth}x{_viewModel.ActualHeight}", 20, 70, SKTextAlign.Left, font, paint);
+        canvas.DrawText($"Size: {_viewModel.ActualWidth}x{_viewModel.ActualHeight}", 20, 70, SKTextAlign.Left, font, outline);
     }
 
     private void RenderTimer_Tick(object? sender, EventArgs e) => RenderFrame();

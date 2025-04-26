@@ -165,7 +165,6 @@ public partial class MainWindow : Window
     {
         Color = color,
         IsStroke = true,
-        FilterQuality = SKFilterQuality.High,
         IsAntialias = true,
         StrokeWidth = strokeWidth
     };
@@ -173,7 +172,6 @@ public partial class MainWindow : Window
     private SKPaint CreateFill(SKColor color) => new SKPaint()
     {
         Color = color,
-        FilterQuality = SKFilterQuality.High,
         IsAntialias = true
     };
 

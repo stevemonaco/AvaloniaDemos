@@ -40,7 +40,7 @@ public static class DebugPlus
         var assets = new List<AssetRuntimeInfo>();
         var assetUris = new List<Uri>();
 
-        foreach (var assemblyInfo in GetAllAssemblyInfo(true))
+        foreach (var assemblyInfo in GetAllAssemblyInfo(false))
         {
             try
             {

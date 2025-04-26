@@ -8,15 +8,13 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid RowDefinitions="auto, *">
+    <Grid RowDefinitions="auto, *, *">
         <StackPanel Orientation="Horizontal" Spacing="4">
             <TextBlock VerticalAlignment="Center" Text="Match:" />
             <TextBox x:Name="patternBox" Text="ipsum" />
             <CheckBox x:Name="useRegex" Content="Use Regex" />
         </StackPanel>
         <ScrollViewer Grid.Row="1">
-            <!--  Leave one uncommented to test with  -->
-
             <c:TextHighlightBlock BackgroundHighlight="Orange" Pattern="{Binding #patternBox.Text}" SelectionBrush="#B05B6EE1"
                 TextWrapping="WrapWithOverflow" UseRegex="{Binding #useRegex.IsChecked}">
                 Lorem ipsum odor amet, consectetuer adipiscing elit. Bibendum ullamcorper morbi; pretium lectus natoque vestibulum. Suscipit phasellus venenatis consequat, porttitor erat tristique molestie. Est nullam convallis; penatibus conubia tortor sem himenaeos ut. Varius aenean aliquet suspendisse tincidunt montes condimentum; lectus vehicula nascetur. Imperdiet nulla consectetur pretium etiam, imperdiet pulvinar phasellus. Sit mattis arcu vehicula hac felis ad. Dictum erat augue; magnis nostra vitae venenatis senectus velit. Diam donec per augue dapibus, rutrum eros maecenas.
@@ -25,15 +23,16 @@
                 Proin platea massa habitant; quisque amet consequat duis. Sodales massa sociosqu tempus posuere hac nullam posuere nisl. Lacinia nisl feugiat integer volutpat ad etiam auctor. Augue mauris libero amet odio rhoncus. Natoque arcu sapien mus odio, ultrices vehicula nisi. Porta risus erat interdum pulvinar placerat urna blandit. Dignissim maecenas et volutpat eleifend penatibus sociosqu enim. Ultricies vivamus sem cursus fermentum bibendum integer inceptos maecenas.
                 Aliquam odio metus eros, nam efficitur nostra. Quis elit elementum curae aliquet mi elit. Nullam id dignissim mattis ullamcorper, ornare conubia. Sem molestie urna rutrum, ultricies at libero tristique. Lacus etiam fermentum natoque eros etiam ad quis magna tempor. Pharetra platea lectus pretium suscipit varius phasellus. Cursus vel sem accumsan congue eu cras mollis scelerisque faucibus. Suscipit non dolor, adipiscing magnis sem inceptos praesent lobortis. Commodo est feugiat habitant purus augue sociosqu ultrices ullamcorper.
             </c:TextHighlightBlock>
-
-            <!--<c:TextHighlightBox BackgroundHighlight="Orange" Pattern="{Binding #patternBox.Text}" SelectionBrush="#B05B6EE1"
+        </ScrollViewer>
+      <ScrollViewer Grid.Row="2">
+        <c:TextHighlightBox BackgroundHighlight="Orange" Pattern="{Binding #patternBox.Text}" SelectionBrush="#B05B6EE1"
                 TextWrapping="WrapWithOverflow" UseRegex="{Binding #useRegex.IsChecked}">
                 Lorem ipsum odor amet, consectetuer adipiscing elit. Bibendum ullamcorper morbi; pretium lectus natoque vestibulum. Suscipit phasellus venenatis consequat, porttitor erat tristique molestie. Est nullam convallis; penatibus conubia tortor sem himenaeos ut. Varius aenean aliquet suspendisse tincidunt montes condimentum; lectus vehicula nascetur. Imperdiet nulla consectetur pretium etiam, imperdiet pulvinar phasellus. Sit mattis arcu vehicula hac felis ad. Dictum erat augue; magnis nostra vitae venenatis senectus velit. Diam donec per augue dapibus, rutrum eros maecenas.
                 Ante sollicitudin primis lectus eget pretium auctor sem. Nascetur massa ultricies lacinia dis justo augue aptent libero nibh. Urna viverra cubilia ipsum quam sit torquent conubia. Rhoncus lectus ipsum montes accumsan proin morbi ad massa eget. Vitae egestas aptent convallis elementum turpis suspendisse ad nostra mauris. Euismod blandit a dis fermentum vitae fermentum. Non morbi bibendum volutpat malesuada condimentum lectus. Sem placerat ullamcorper faucibus semper a faucibus neque integer. Tempus vitae natoque vitae nam vel. Sociosqu metus tristique ligula et torquent.
                 Venenatis ad laoreet hac mus; nec nullam. Morbi arcu tristique convallis justo augue nisi dapibus accumsan? Nec leo rutrum egestas; neque nec aptent quam hendrerit. Odio tellus netus condimentum odio varius inceptos. Nibh taciti aliquam nullam molestie egestas mauris sagittis. Volutpat elit porttitor augue posuere vehicula nibh. Metus venenatis nascetur tortor imperdiet lacus, bibendum sit hac sagittis. Felis aliquam arcu rutrum nisi, nisl aliquet.
                 Proin platea massa habitant; quisque amet consequat duis. Sodales massa sociosqu tempus posuere hac nullam posuere nisl. Lacinia nisl feugiat integer volutpat ad etiam auctor. Augue mauris libero amet odio rhoncus. Natoque arcu sapien mus odio, ultrices vehicula nisi. Porta risus erat interdum pulvinar placerat urna blandit. Dignissim maecenas et volutpat eleifend penatibus sociosqu enim. Ultricies vivamus sem cursus fermentum bibendum integer inceptos maecenas.
                 Aliquam odio metus eros, nam efficitur nostra. Quis elit elementum curae aliquet mi elit. Nullam id dignissim mattis ullamcorper, ornare conubia. Sem molestie urna rutrum, ultricies at libero tristique. Lacus etiam fermentum natoque eros etiam ad quis magna tempor. Pharetra platea lectus pretium suscipit varius phasellus. Cursus vel sem accumsan congue eu cras mollis scelerisque faucibus. Suscipit non dolor, adipiscing magnis sem inceptos praesent lobortis. Commodo est feugiat habitant purus augue sociosqu ultrices ullamcorper.
-            </c:TextHighlightBox>-->
-        </ScrollViewer>
+            </c:TextHighlightBox>
+      </ScrollViewer>
     </Grid>
 </Window>

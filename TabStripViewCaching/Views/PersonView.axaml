@@ -1,0 +1,20 @@
+<UserControl x:Class="TabStripViewCaching.Views.PersonView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:TabStripViewCaching.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:PersonViewModel"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Left" Spacing="8">
+            <TextBox MaxWidth="200" Text="{Binding Name}" UseFloatingWatermark="True" Watermark="Name" />
+            <TextBox MaxWidth="200" Text="{Binding Age}" UseFloatingWatermark="True" Watermark="Age" />
+            <TextBox MaxWidth="200" Text="{Binding Hobby}" UseFloatingWatermark="True" Watermark="Hobby" />
+
+            <Button Click="RandomizeBackground_Click" Content="Randomize Background" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

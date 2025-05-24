@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="Assets\avalonia-logo.ico" />
+    <AvaloniaResource Remove="Assets\tabstripcaching.gif" />
   </ItemGroup>
 
   <ItemGroup>

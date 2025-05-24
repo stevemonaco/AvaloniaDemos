@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace TabStripViewCaching.ViewModels;
 
@@ -20,6 +21,12 @@ public partial class MainWindowViewModel : ObservableObject
         new PersonViewModel()
     };
 
+    [ObservableProperty] private TabViewModel? _selectedTabStripItem;
+
+    public MainWindowViewModel()
+    {
+        SelectedTabStripItem = TabStripItems.FirstOrDefault();
+    }
 
     [RelayCommand]
     private void AddPersonToTabControlItems()

@@ -22,10 +22,7 @@ public partial class MainWindow : Window
         if (e.AddedItems is not { Count: 1 })
             throw new InvalidOperationException();
 
-        if (tabStrip is null)
-            return;
-
-        if (tabStrip.SelectedIndex >= _tabCache.Count)
+        if (tabStrip?.SelectedIndex is null || tabStrip.SelectedIndex >= _tabCache.Count)
             return;
 
         tabStripContent.Content = _tabCache[tabStrip.SelectedIndex];
@@ -33,47 +30,85 @@ public partial class MainWindow : Window
 
     protected override void OnLoaded(RoutedEventArgs e)
     {
-        ViewModel.TabStripItems.CollectionChanged += TabStripItems_CollectionChanged;
         _tabCache.Clear();
+        ViewModel.TabStripItems.CollectionChanged += TabStripItems_CollectionChanged;
 
         var tabViews = ViewModel.TabStripItems.Select(CreateViewForViewModel);
         _tabCache.AddRange(tabViews);
+
+        var selectedView = _tabCache.FirstOrDefault(x => x.DataContext == ViewModel.SelectedTabStripItem);
+        if (selectedView is not null)
+            tabStripContent.Content = selectedView;
     }
 
+    /// <summary>
+    /// The hard part -- responding to INCC and keeping the TabStrip's view cache correct
+    /// There's more work here to be done regarding managing the selected item if it's removed
+    /// </summary>
     private void TabStripItems_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
-        if (e.Action == NotifyCollectionChangedAction.Remove)
+        switch (e.Action)
         {
-            if (e.OldItems is null)
-                throw new InvalidOperationException();
+            case NotifyCollectionChangedAction.Remove:
+                if (e.OldItems is null)
+                    throw new InvalidOperationException();
 
-            var index = e.OldStartingIndex;
-            var itemsRemoved = e.OldItems.Count;
+                var removeIndex = e.OldStartingIndex;
+                var itemsRemoved = e.OldItems.Count;
 
-            for (int i = 0; i < itemsRemoved; i++, index++)
-                _tabCache.RemoveAt(index);
-        }
-        else if (e.Action == NotifyCollectionChangedAction.Add)
-        {
-            if (e.NewItems is null)
-                throw new InvalidOperationException();
+                for (int i = itemsRemoved - 1; i >= 0; i--)
+                    _tabCache.RemoveAt(removeIndex + i);
+                break;
 
-            var index = e.NewStartingIndex;
-            var itemCount = e.NewItems.Count;
-            var items = e.NewItems;
+            case NotifyCollectionChangedAction.Add:
+                if (e.NewItems is null)
+                    throw new InvalidOperationException();
 
-            foreach (var item in items.Cast<TabViewModel>())
-            {
-                var view = CreateViewForViewModel(item);
-                _tabCache.Insert(index, view);
-                index++;
-            }
+                var addIndex = e.NewStartingIndex;
+                var items = e.NewItems;
+
+                foreach (var item in items.Cast<TabViewModel>())
+                {
+                    var view = CreateViewForViewModel(item);
+                    _tabCache.Insert(addIndex, view);
+                    addIndex++;
+                }
+                break;
+
+            case NotifyCollectionChangedAction.Replace:
+                if (e.NewItems is null || e.OldItems is null)
+                    throw new InvalidOperationException();
+
+                var replaceIndex = e.NewStartingIndex;
+
+                for (int i = 0; i < e.NewItems.Count; i++)
+                {
+                    var newViewModel = (TabViewModel)e.NewItems[i]!;
+                    var newView = CreateViewForViewModel(newViewModel);
+                    _tabCache[replaceIndex + i] = newView;
+                }
+                break;
+
+            case NotifyCollectionChangedAction.Reset:
+                _tabCache.Clear();
+                var tabViews = ViewModel.TabStripItems.Select(CreateViewForViewModel);
+                _tabCache.AddRange(tabViews);
+                break;
+
+            case NotifyCollectionChangedAction.Move:
+                throw new NotSupportedException($"Collection change action '{e.Action}' is not supported.");
+
+            default:
+                throw new NotSupportedException($"Collection change action '{e.Action}' is not supported.");
         }
     }
 
     private UserControl CreateViewForViewModel(TabViewModel viewModel)
     {
-        var view = new PersonView() { DataContext = viewModel };
-        return view;
+        return viewModel switch
+        {
+            PersonViewModel => new PersonView() { DataContext = viewModel },
+            _ => throw new NotSupportedException($"ViewModel type '{viewModel.GetType()}' is not supported.")
+        };
     }
 }

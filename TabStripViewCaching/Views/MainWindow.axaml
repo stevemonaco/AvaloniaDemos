@@ -10,6 +10,11 @@
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate x:Key="TabHeaderTemplate" x:DataType="vm:TabViewModel">
+            <TextBlock Text="{Binding DisplayName}" />
+        </DataTemplate>
+    </Window.Resources>
 
     <Grid RowDefinitions="*, 4, *">
         <DockPanel Grid.Row="0">
@@ -17,13 +22,7 @@
                 <TextBlock VerticalAlignment="Center" FontSize="24" Text="TabControl" />
                 <Button Command="{Binding AddPersonToTabControlItemsCommand}" Content="Add New Person VM to TabControlItems" />
             </StackPanel>
-            <TabControl ItemsSource="{Binding TabControlItems}">
-                <TabControl.ItemTemplate>
-                    <DataTemplate x:DataType="vm:TabViewModel">
-                        <TextBlock Text="{Binding DisplayName}" />
-                    </DataTemplate>
-                </TabControl.ItemTemplate>
-            </TabControl>
+            <TabControl ItemTemplate="{StaticResource TabHeaderTemplate}" ItemsSource="{Binding TabControlItems}" />
         </DockPanel>
 
         <GridSplitter Grid.Row="1" Height="4" Background="White" ResizeDirection="Rows" />
@@ -33,17 +32,12 @@
                 <TextBlock VerticalAlignment="Center" FontSize="24" Text="TabStrip" />
                 <Button Command="{Binding AddPersonToTabStripItemsCommand}" Content="Add New Person VM to TabStripItems" />
             </StackPanel>
-            <TabStrip x:Name="tabStrip" Grid.Row="1" ItemsSource="{Binding TabStripItems}"
-                SelectionChanged="TabStrip_SelectionChanged">
-                <TabStrip.ItemTemplate>
-                    <DataTemplate x:DataType="vm:TabViewModel">
-                        <TextBlock Text="{Binding DisplayName}" />
-                    </DataTemplate>
-                </TabStrip.ItemTemplate>
-            </TabStrip>
+            <TabStrip x:Name="tabStrip" Grid.Row="1" ItemTemplate="{StaticResource TabHeaderTemplate}"
+                ItemsSource="{Binding TabStripItems}" SelectedItem="{Binding SelectedTabStripItem}"
+                SelectionChanged="TabStrip_SelectionChanged" />
 
-            <!--  This displays what the TabStrip selected and was created/pulled from the view cache  -->
-            <ContentControl x:Name="tabStripContent" Grid.Row="2" />
+            <!--  This ContentControl displays what the TabStrip selected and was created/pulled from the view cache  -->
+            <ContentControl x:Name="tabStripContent" Grid.Row="2" Margin="12,0,12,0" />
         </Grid>
     </Grid>
 </Window>

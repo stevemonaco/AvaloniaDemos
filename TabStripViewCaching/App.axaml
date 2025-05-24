@@ -1,14 +1,11 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="TabStripViewCaching.App"
-             xmlns:local="using:TabStripViewCaching"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
+<Application x:Class="TabStripViewCaching.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TabStripViewCaching"
+    RequestedThemeVariant="Default">
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

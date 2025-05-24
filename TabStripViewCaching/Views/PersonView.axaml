@@ -10,6 +10,7 @@
     mc:Ignorable="d">
     <ScrollViewer>
         <StackPanel HorizontalAlignment="Left" Spacing="8">
+            <TextBlock Text="{Binding Id, StringFormat='Id = {0}'}" />
             <TextBox MaxWidth="200" Text="{Binding Name}" UseFloatingWatermark="True" Watermark="Name" />
             <TextBox MaxWidth="200" Text="{Binding Age}" UseFloatingWatermark="True" Watermark="Age" />
             <TextBox MaxWidth="200" Text="{Binding Hobby}" UseFloatingWatermark="True" Watermark="Hobby" />

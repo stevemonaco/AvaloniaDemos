@@ -3,5 +3,5 @@
 namespace TabStripViewCaching.ViewModels;
 public abstract class TabViewModel : ObservableObject
 {
-    public abstract string? DisplayName { get; set; }
+    public abstract string? DisplayName { get; }
 }

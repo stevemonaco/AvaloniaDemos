@@ -1,5 +1,5 @@
 # AvaloniaDemos
-Collection of small demos written in C# / Avalonia
+Collection of unofficial small demos written in C# / Avalonia. Not associated with AvaloniaUI.
 
 Please check the Readme in each project folder for specific details.
 
